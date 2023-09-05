@@ -4,7 +4,7 @@ export class Brand {
       public id: string,
       public name: string,
       public code: string,
-      public image:string
+      public image:File
   ) {}
 
 

@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { DomSanitizer } from '@angular/platform-browser';
 const base_url = environment.base_url;
 
 @Component({
@@ -18,6 +19,8 @@ const base_url = environment.base_url;
 export class BrandFormComponent implements OnInit {
   public isUpdate: string = '';
 
+  public assets: any = [];
+
   public brandForm!: FormGroup;
 
   public title: string = '';
@@ -25,7 +28,8 @@ export class BrandFormComponent implements OnInit {
   constructor(
     private brandsService: BrandsService,
     private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -36,23 +40,7 @@ export class BrandFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    const formData = new FormData();
-    formData.append('name', this.brandForm.get('name')?.value);
-    formData.append('code', this.brandForm.get('code')?.value);
-    formData.append('image', this.brandForm.get('image')?.value);
-
-
-
-      this.brandsService.addBrand(this.brandForm.value).subscribe({
-        next: (res) => {
-          console.log('Upload sucess', res);
-        },
-        error: (err) => console.warn('Upload error', err),
-      });
-
-
-  }
+  onSubmit() {}
 
   url = `${base_url}/assets/media/images/blank-image.svg`;
 
@@ -60,16 +48,49 @@ export class BrandFormComponent implements OnInit {
 
   /*onSelectedFile(e:any){
     if(e.target.files){
+      const file = e.target.files[0];
       var reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
+      reader.readAsDataURL(file);
       reader.onload=(event:any)=>{
           this.url=event.target.result;
           console.log(event.target.result)
       }
+      this.selectedFile = file;
     }
   }*/
-  onSelectedFile(event: any) {
-    this.selectedFile = event.target.files[0];
-    this.brandForm.get('image')?.setValue(this.selectedFile);
+
+  AddFile(event: any) {
+    const fileAdded = event.target.files[0];
+    this.extractBase64(fileAdded).then((image) => {
+      console.log(image);
+    });
+    this.assets.push(fileAdded);
+    console.log(event.target.files);
   }
+
+  extractBase64 = async ($event: any) =>
+    new Promise((resolve, reject) => {
+      try {
+        const unsateImg = window.URL.createObjectURL($event);
+        const image = this.sanitizer.bypassSecurityTrustUrl(unsateImg);
+        const reader = new FileReader();
+        reader.readAsDataURL($event);
+        reader.onload = () => {
+          resolve({
+            base: reader.result,
+          });
+        };
+        reader.onerror = (error) => {
+          reject({
+            base: null,
+            error: error,
+          });
+        };
+      } catch (e) {
+        reject({
+          base: null,
+          error: e,
+        });
+      }
+    });
 }
