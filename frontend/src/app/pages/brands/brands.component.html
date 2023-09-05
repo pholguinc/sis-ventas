@@ -1,0 +1,114 @@
+<!--begin::Category-->
+<div class="card card-flush">
+  <!--begin::Card header-->
+  <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+    <!--begin::Search-->
+    <div class="d-flex align-items-center position-relative my-1">
+      <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+      <span class="svg-icon svg-icon-1 position-absolute ms-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <rect
+            opacity="0.5"
+            x="17.0365"
+            y="15.1223"
+            width="8.15546"
+            height="2"
+            rx="1"
+            transform="rotate(45 17.0365 15.1223)"
+            fill="currentColor"
+          />
+          <path
+            d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      <!--end::Svg Icon-->
+      <input
+        matInput
+        type="text"
+        (keyup)="applyFilter($event)"
+        class="form-control form-control-solid w-250px ps-14"
+        placeholder="Buscar Categoría"
+      />
+    </div>
+    <!--end::Search-->
+
+    <!--end::Card title-->
+    <!--begin::Card toolbar-->
+    <div class="card-toolbar">
+      <!--begin::Add customer-->
+      <a href="#" class="btn btn-primary">
+      <span>
+        <i class="fa fa-plus"></i>
+      </span>Caption</a>
+
+      <a routerLink="/admin/mantenimientos/marca/nuevo" class="btn btn-primary"
+        >
+        <i class="fa fa-plus"></i>
+        <span>Agregar Marcas</span></a
+      >
+      <!--end::Add customer-->
+    </div>
+    <!--end::Card toolbar-->
+  </div>
+  <!--end::Card header-->
+  <!--begin::Card body-->
+  <div class="card-body pt-0">
+    <!--begin::Table-->
+    <div class="example-container">
+      <div class="table-responsive">
+       <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="image">
+          <mat-header-cell *matHeaderCellDef mat-sort-header > Imagen</mat-header-cell>
+          <mat-cell *matCellDef="let row" data-label="image" class="mt-4" id="image-data">
+            <img [src]="base_url + '/' + row.image" alt="" [width]="80">
+          </mat-cell>
+         </ng-container>
+         <ng-container matColumnDef="code">
+           <mat-header-cell *matHeaderCellDef mat-sort-header> Código</mat-header-cell>
+           <mat-cell *matCellDef="let row" data-label="Código" class="mt-4"> {{row.code}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+           <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+           <mat-cell *matCellDef="let row" data-label="Nombre" class="mt-4"> {{row.name}} </mat-cell>
+         </ng-container>
+
+
+         <ng-container matColumnDef="acciones">
+           <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
+           <mat-cell *matCellDef="let row" data-label="Acciones" class="mt-4">
+             <button class="btn btn-sm btn-primary margin-btn">
+               edirtt
+             </button>
+             <button fxHide.lt-md class="btn btn-sm btn-primary">
+               delete
+             </button>
+           </mat-cell>
+         </ng-container>
+
+         <tr *matNoDataRow class="nodata">
+           <p>No se encontraron resultados con su búsqueda</p>
+         </tr>
+
+         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+     <mat-row *matRowDef="let row; columns: displayedColumns;">
+     </mat-row>
+        </mat-table>
+      </div>
+
+      <mat-paginator [pageSize]="5" [hidePageSize]="true" showFirstLastButtons></mat-paginator>
+    </div>
+
+    <!--end::Table-->
+  </div>
+  <!--end::Card body-->
+</div>
+<!--end::Category-->

@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.margin-btn {
+  margin-right: 0.5rem;
+}
+
+.mat-mdc-table thead {
+  background: #272c33 !important;
+}
+
+.mat-mdc-header-row,
+.mat-sort-header-pointer-right,
+.mat-sort-header-arrow {
+  color: #fff !important;
+}
+.w100 {
+  width: 100px;
+}

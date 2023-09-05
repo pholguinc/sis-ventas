@@ -1,0 +1,39 @@
+.
+<div class="d-flex flex-column flex-root">
+<!--begin::Page-->
+<div class="page d-flex flex-row flex-column-fluid">
+<app-sidebar></app-sidebar>
+
+<!--begin::Wrapper-->
+<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+<!--begin::Header-->
+<app-header></app-header>
+<!--end::Header-->
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+<!--begin::Toolbar-->
+<app-toolbar></app-toolbar>
+<!--end::Toolbar-->
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+  <!--begin::Container-->
+  <div id="kt_content_container" class="container-xxl">
+    <!--begin::Sistema de Rutas-->
+    <div class="row g-5 g-xl-10 mb-xl-10">
+      <router-outlet></router-outlet>
+    </div>
+    <!--end::Sistema de Rutas-->
+  </div>
+  <!--end::Container-->
+</div>
+<!--end::Post-->
+</div>
+<!--end::Content-->
+<!--begin::Footer-->
+
+<!--end::Footer-->
+</div>
+<!--end::Wrapper-->
+</div>
+<!--end::Page-->
+</div>
