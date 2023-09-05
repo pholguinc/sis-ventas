@@ -83,3 +83,13 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
   flex: 0.3;
 }*/
 
+.btn i {
+  display: inline-flex;
+  font-size: 1rem;
+  padding-right: 0rem;
+  vertical-align: middle;
+  line-height: 0;
+}
+#p-icon{
+  padding-right: 0.5rem;
+}

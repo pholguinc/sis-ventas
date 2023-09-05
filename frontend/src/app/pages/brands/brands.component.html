@@ -43,15 +43,12 @@
     <!--end::Card title-->
     <!--begin::Card toolbar-->
     <div class="card-toolbar">
-      <!--begin::Add customer-->
-      <a href="#" class="btn btn-primary">
-      <span>
-        <i class="fa fa-plus"></i>
-      </span>Caption</a>
 
+
+      <!--begin::Add customer-->
       <a routerLink="/admin/mantenimientos/marca/nuevo" class="btn btn-primary"
         >
-        <i class="fa fa-plus"></i>
+        <i class="fa fa-plus" id="p-icon"></i>
         <span>Agregar Marcas</span></a
       >
       <!--end::Add customer-->
@@ -85,12 +82,14 @@
          <ng-container matColumnDef="acciones">
            <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
            <mat-cell *matCellDef="let row" data-label="Acciones" class="mt-4">
-             <button class="btn btn-sm btn-primary margin-btn">
-               edirtt
-             </button>
-             <button fxHide.lt-md class="btn btn-sm btn-primary">
-               delete
-             </button>
+            <a href="#" class="btn btn-primary margin-btn">
+              <i class="bi bi-pencil-fill fs-4 me-2"></i>
+              Editar
+            </a>
+             <a class="btn btn-danger">
+              <i class="bi bi-trash-fill fs-4 me-2"></i>
+              Eliminar
+             </a>
            </mat-cell>
          </ng-container>
 
