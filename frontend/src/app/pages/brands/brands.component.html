@@ -43,11 +43,8 @@
     <!--end::Card title-->
     <!--begin::Card toolbar-->
     <div class="card-toolbar">
-
-
       <!--begin::Add customer-->
-      <a routerLink="/admin/mantenimientos/marca/nuevo" class="btn btn-primary"
-        >
+      <a routerLink="/admin/mantenimientos/marca/nuevo" class="btn btn-primary">
         <i class="fa fa-plus" id="p-icon"></i>
         <span>Agregar Marcas</span></a
       >
@@ -61,49 +58,55 @@
     <!--begin::Table-->
     <div class="example-container">
       <div class="table-responsive">
-       <mat-table [dataSource]="dataSource" matSort>
-        <ng-container matColumnDef="image">
-          <mat-header-cell *matHeaderCellDef mat-sort-header > Imagen</mat-header-cell>
-          <mat-cell *matCellDef="let row" data-label="image" class="mt-4" id="image-data">
-            <img [src]="base_url + '/' + row.image" alt="" [width]="80">
-          </mat-cell>
-         </ng-container>
-         <ng-container matColumnDef="code">
-           <mat-header-cell *matHeaderCellDef mat-sort-header> Código</mat-header-cell>
-           <mat-cell *matCellDef="let row" data-label="Código" class="mt-4"> {{row.code}} </mat-cell>
+        <mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="code">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Código</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row" data-label="Código" class="mt-4">
+              {{ row.code }}
+            </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="name">
-           <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-           <mat-cell *matCellDef="let row" data-label="Nombre" class="mt-4"> {{row.name}} </mat-cell>
-         </ng-container>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Nombre
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Nombre" class="mt-4">
+              {{ row.name }}
+            </mat-cell>
+          </ng-container>
 
+          <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Acciones
+            </mat-header-cell>
+            <mat-cell *matCellDef="let brand" data-label="Acciones" class="mt-4">
+              <a href="#" class="btn btn-primary margin-btn">
+                <i class="bi bi-pencil-fill fs-4 me-2"></i>
+                Editar
+              </a>
+              <a class="btn btn-danger" (click)="deleteBrand(brand)">
+                <i class="bi bi-trash-fill fs-4 me-2"></i>
+                Eliminar
+              </a>
+            </mat-cell>
+          </ng-container>
 
-         <ng-container matColumnDef="acciones">
-           <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
-           <mat-cell *matCellDef="let row" data-label="Acciones" class="mt-4">
-            <a href="#" class="btn btn-primary margin-btn">
-              <i class="bi bi-pencil-fill fs-4 me-2"></i>
-              Editar
-            </a>
-             <a class="btn btn-danger">
-              <i class="bi bi-trash-fill fs-4 me-2"></i>
-              Eliminar
-             </a>
-           </mat-cell>
-         </ng-container>
+          <tr *matNoDataRow class="nodata">
+            <p>No se encontraron resultados con su búsqueda</p>
+          </tr>
 
-         <tr *matNoDataRow class="nodata">
-           <p>No se encontraron resultados con su búsqueda</p>
-         </tr>
-
-         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-     <mat-row *matRowDef="let row; columns: displayedColumns;">
-     </mat-row>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
         </mat-table>
       </div>
 
-      <mat-paginator [pageSize]="5" [hidePageSize]="true" showFirstLastButtons></mat-paginator>
+      <mat-paginator
+        [pageSize]="5"
+        [hidePageSize]="true"
+        showFirstLastButtons
+      ></mat-paginator>
     </div>
 
     <!--end::Table-->

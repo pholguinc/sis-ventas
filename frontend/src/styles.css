@@ -25,3 +25,15 @@ body {
 .w100 {
   width: 100px;
 }
+
+
+.swal2-popup .swal2-title {
+  font-weight: 500;
+  font-size: 1.8rem!important;
+  color: #181c32;
+}
+
+
+.mat-typography h2 {
+  margin: 0!important;
+}

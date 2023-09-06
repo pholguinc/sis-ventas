@@ -62,4 +62,4 @@
 /backend/*.env
 
 # database
-/postgres
+/backend/postgres

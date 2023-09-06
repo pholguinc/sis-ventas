@@ -6,22 +6,11 @@ import {
   Param,
   Delete,
   Put,
-  UseGuards,
-  UseInterceptors,
-  UploadedFile,
-  Res,
 } from '@nestjs/common';
 import { BrandsService } from '../services/brands.service';
 import { CreateBrandDto, UpdateBrandDto } from '../dto/brand.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { multerConfig } from 'src/utils/multer.config';
-import { FileInterceptor } from '@nestjs/platform-express';
-import { Response } from 'express';
-import * as express from 'express';
-import { Observable, of } from 'rxjs';
-import { join } from 'path';
-import * as path from 'path';
 
 //@UseGuards(AuthGuard('jwt'))
 @ApiTags('Brands')
@@ -30,11 +19,8 @@ export class BrandsController {
   constructor(private readonly brandsService: BrandsService) {}
 
   @Post()
-  @UseInterceptors(FileInterceptor('image', multerConfig))
   @ApiOperation({ summary: 'Petición HTTP para crear marcas' })
-  create(@UploadedFile() file, @Body() data: CreateBrandDto) {
-    const image = `${file.filename}`;
-    data.image = image;
+  create(@Body() data: CreateBrandDto) {
     return this.brandsService.create(data);
   }
 

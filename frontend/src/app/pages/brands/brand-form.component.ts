@@ -1,15 +1,9 @@
+
 import { BrandsService } from 'src/app/services/brands.service';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
-import { DomSanitizer } from '@angular/platform-browser';
-const base_url = environment.base_url;
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-brand-form',
@@ -18,79 +12,49 @@ const base_url = environment.base_url;
 })
 export class BrandFormComponent implements OnInit {
   public isUpdate: string = '';
-
   public assets: any = [];
-
   public brandForm!: FormGroup;
-
   public title: string = '';
+  public titleModule: string = 'Marca';
 
   constructor(
     private brandsService: BrandsService,
-    private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute,
-    private sanitizer: DomSanitizer
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.brandForm = this.fb.group({
-      name: ['', Validators.required],
       code: ['', Validators.required],
-      image: [''],
+      name: ['', Validators.required],
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
 
-  url = `${base_url}/assets/media/images/blank-image.svg`;
-
-  selectedFile = null;
-
-  /*onSelectedFile(e:any){
-    if(e.target.files){
-      const file = e.target.files[0];
-      var reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload=(event:any)=>{
-          this.url=event.target.result;
-          console.log(event.target.result)
-      }
-      this.selectedFile = file;
-    }
-  }*/
-
-  AddFile(event: any) {
-    const fileAdded = event.target.files[0];
-    this.extractBase64(fileAdded).then((image) => {
-      console.log(image);
-    });
-    this.assets.push(fileAdded);
-    console.log(event.target.files);
-  }
-
-  extractBase64 = async ($event: any) =>
-    new Promise((resolve, reject) => {
-      try {
-        const unsateImg = window.URL.createObjectURL($event);
-        const image = this.sanitizer.bypassSecurityTrustUrl(unsateImg);
-        const reader = new FileReader();
-        reader.readAsDataURL($event);
-        reader.onload = () => {
-          resolve({
-            base: reader.result,
-          });
-        };
-        reader.onerror = (error) => {
-          reject({
-            base: null,
-            error: error,
-          });
-        };
-      } catch (e) {
-        reject({
-          base: null,
-          error: e,
+      this.brandsService.addBrand(this.brandForm.value).subscribe({
+        next: (res) => {
+          Swal.fire({
+            title:"Correcto",
+            text: "¡La marca fue registrada correctamente!",
+            icon: "success",
+            buttonsStyling: false,
+            confirmButtonText: "Ok",
+            customClass: {
+                confirmButton: "btn btn-primary"
+            }
         });
-      }
-    });
+
+          console.log('Upload success', res);
+        },
+        error: (err) => {
+
+          console.warn('Upload error', err.error.msg)
+        },
+
+      });
+      console.log('Form is invalid');
+
+  }
+
+  
 }

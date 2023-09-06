@@ -13,10 +13,6 @@ import { promises as fsPromises } from 'fs';
 import { ErrorManager } from 'src/utils/error.manager';
 import { readdir } from 'fs';
 
-interface FileParams {
-  fileName: string;
-}
-
 @Injectable()
 export class BrandsService {
   constructor(@InjectRepository(Brand) private brandRepo: Repository<Brand>) {}

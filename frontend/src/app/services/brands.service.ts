@@ -21,7 +21,7 @@ export class BrandsService {
   }
 
   //Función para Crear Brands con TOKEN
-  addBrand(brand: Brand): Observable<any> {
+  addBrand(brand:Brand) {
     const token = localStorage.getItem('token');
     const obj = new HttpHeaders().set('Authorization', 'bearer ' + token);
     return this.http.post(`${base_url}/brands`, brand, { headers: obj });
@@ -32,5 +32,11 @@ export class BrandsService {
     const token = localStorage.getItem('token');
     const obj = new HttpHeaders().set('Authorization', 'bearer ' + token);
     return this.http.post(`${base_url}/brands/images`, { headers: obj });
+  }
+
+  deleteBrand(id: string): Observable<Brand> {
+    const token = localStorage.getItem('token');
+    const obj = new HttpHeaders().set('Authorization', 'bearer ' + token);
+    return this.http.delete<Brand>(`${base_url}/brands/${id}`, { headers: obj });
   }
 }

@@ -13,9 +13,6 @@ export class Brand {
   @Column({ type: 'varchar', length: 255, unique: true })
   code: string;
 
-  @Column()
-  image: string;
-
   @Column(() => DateAt, { prefix: false })
   register: DateAt;
 

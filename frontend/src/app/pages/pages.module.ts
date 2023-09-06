@@ -7,7 +7,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Importa el módulo de spinner de carga
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 //Componentes
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -26,9 +26,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
-
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -42,7 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UsersComponent,
     RolesComponent,
     InventoryComponent,
-    BrandFormComponent
+    BrandFormComponent,
   ],
   imports: [
     CommonModule,
@@ -57,12 +54,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  exports:[
-    DashboardComponent,
-    BrandsComponent,
-    CustomersComponent
-  ]
+  exports: [DashboardComponent, BrandsComponent, CustomersComponent],
 })
-export class PagesModule { }
+export class PagesModule {}
