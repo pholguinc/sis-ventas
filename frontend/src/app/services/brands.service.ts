@@ -1,9 +1,14 @@
+//Librerías
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
+//Enviorments
 import { environment } from 'src/environments/environment.prod';
-import { Brand } from '../models/brand.model';
 const base_url = environment.base_url;
+
+//Modelos
+import { Brand } from '../models/brand.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,39 +17,34 @@ export class BrandsService {
 
   constructor(private http: HttpClient) { }
 
-  loadBrands(): Observable<any> {
+  //Función global para capturar y validar el token
+  private getHeadersToken(): HttpHeaders {
     const token = localStorage.getItem('token');
-
-    const obj = new HttpHeaders().set('Authorization', 'bearer ' + token);
-
-    return this.http.get(`${base_url}/brands`, { headers: obj });
+    return new HttpHeaders().set('Authorization', 'Bearer ' + token);
   }
 
-  //Función para Crear Brands con TOKEN
-  addBrand(brand:Brand) {
-    const token = localStorage.getItem('token');
-    const obj = new HttpHeaders().set('Authorization', 'bearer ' + token);
-    return this.http.post(`${base_url}/brands`, brand, { headers: obj });
+  //Función para cargar Marcas y validar token
+  loadBrands(): Observable<Brand[]> {
+    return this.http.get<Brand[]>(`${base_url}/brands`, { headers: this.getHeadersToken() });
   }
 
-
-  brandId(id: string): Observable<any> {
-    const token = localStorage.getItem('token');
-    const obj = new HttpHeaders().set('Authorization', 'bearer ' + token);
-    return this.http.get(`${base_url}/brands/${id}`, { headers: obj });
+  //Función para crear Marca y validar token
+  addBrand(brand:Brand):Observable<Brand> {
+    return this.http.post<Brand>(`${base_url}/brands`, brand, { headers: this.getHeadersToken() });
   }
 
-
-  updateCustomer(id: string, brand:Brand) {
-    const token = localStorage.getItem('token');
-    const obj = new HttpHeaders().set('Authorization', 'bearer ' + token);
-    return this.http.put(`${base_url}/brands/${id}`, brand,{ headers: obj });
+  //Función para capturar la Marca por Id y validar token
+  brandId(id: string): Observable<Brand> {
+    return this.http.get<Brand>(`${base_url}/brands/${id}`, { headers: this.getHeadersToken() });
   }
 
+  //Función para actualizar la Marca y validar token
+  updateCustomer(id: string, brand:Brand):Observable<Brand> {
+    return this.http.put<Brand>(`${base_url}/brands/${id}`, brand,{ headers: this.getHeadersToken() });
+  }
 
+  //Función para eliminar la Marca y validar token
   deleteBrand(id: string): Observable<Brand> {
-    const token = localStorage.getItem('token');
-    const obj = new HttpHeaders().set('Authorization', 'bearer ' + token);
-    return this.http.delete<Brand>(`${base_url}/brands/${id}`, { headers: obj });
+    return this.http.delete<Brand>(`${base_url}/brands/${id}`, { headers: this.getHeadersToken() });
   }
 }
