@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 //Enviorments
-import { environment } from 'src/environments/environment.prod';
+import { environment } from '../../environments/environment';
 const base_url = environment.base_url;
 
 //Modelos

@@ -11,17 +11,19 @@
     >
       <!--begin::Header-->
       <div class="card-header pt-5">
+
         <!--begin::Title-->
-        <div class="card-title d-flex flex-column">
-          <!--begin::Amount-->
-          <span class="fs-2hx fw-bolder text-white me-2 lh-1 ls-n2">69</span>
-          <!--end::Amount-->
-          <!--begin::Subtitle-->
-          <span class="text-white opacity-50 pt-1 fw-bold fs-6"
-            >Active Projects</span
-          >
-          <!--end::Subtitle-->
+        <div class="d-flex flex-row align-items-center justify-content-between">
+          <!-- Icon -->
+           <!-- Replace "fa-icon-class-name" with your desired icon class name -->
+
+          <!-- Amount -->
+          <span class="fs-5hx fw-bolder text-white lh-1 ls-n2 mt-3">{{ totalBrands }}</span>
         </div>
+        <i class="fs-4hx text-white fa fa-copyright me-2 mt-3"></i>
+
+
+
         <!--end::Title-->
       </div>
       <!--end::Header-->
@@ -32,14 +34,14 @@
           <div
             class="d-flex justify-content-between fw-bolder fs-6 text-white opacity-50 w-100 mt-auto mb-2"
           >
-            <span>43 Pending</span>
-            <span>72%</span>
+            <span>Marcas Registradas</span>
+            <span>{{ totalBrands }}</span>
           </div>
           <div class="h-8px mx-3 w-100 bg-light-danger rounded">
             <div
               class="bg-danger rounded h-8px"
               role="progressbar"
-              style="width: 72%"
+              style="width: 100%"
               aria-valuenow="50"
               aria-valuemin="0"
               aria-valuemax="100"
