@@ -22,7 +22,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./brands.component.css'],
 })
 export class BrandsComponent implements OnInit, AfterViewInit {
-  base_url!: string;
   brand: Brand[] = [];
 
   dataSource!: MatTableDataSource<Brand>;
@@ -43,7 +42,6 @@ export class BrandsComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.dataSource = new MatTableDataSource();
     this.loadData();
-    this.base_url = environment.base_url;
   }
 
   loadData() {
@@ -85,10 +83,16 @@ export class BrandsComponent implements OnInit, AfterViewInit {
         .subscribe({
           next: (res)=>{
             this.loadData();
+            Swal.fire({
+              text: "¡Marca eliminada correctamente!",
+              icon: "success",
+              buttonsStyling: false,
+              confirmButtonText: "Ok",
+              customClass: {
+                  confirmButton: "btn btn-primary"
+              }
+          })
 
-          },
-          error:(err)=>{
-            console.warn(err)
           }
         })
       }

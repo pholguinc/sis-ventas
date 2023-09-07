@@ -28,11 +28,19 @@ export class BrandsService {
   }
 
 
-  loadImages(): Observable<any> {
+  brandId(id: string): Observable<any> {
     const token = localStorage.getItem('token');
     const obj = new HttpHeaders().set('Authorization', 'bearer ' + token);
-    return this.http.post(`${base_url}/brands/images`, { headers: obj });
+    return this.http.get(`${base_url}/brands/${id}`, { headers: obj });
   }
+
+
+  updateCustomer(id: string, brand:Brand) {
+    const token = localStorage.getItem('token');
+    const obj = new HttpHeaders().set('Authorization', 'bearer ' + token);
+    return this.http.put(`${base_url}/brands/${id}`, brand,{ headers: obj });
+  }
+
 
   deleteBrand(id: string): Observable<Brand> {
     const token = localStorage.getItem('token');

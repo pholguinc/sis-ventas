@@ -20,12 +20,15 @@
             <label class="required form-label">Código de la {{ titleModule }}</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input type="text" name="category_name" class="form-control mb-2" placeholder="Escriba el código de la marca" formControlName="code" />
+
+            <input type="text" class="form-control mb-2" placeholder="Escriba el código de la marca" formControlName="code" />
+
             <!--end::Input-->
             <!--begin::Description-->
             <div class="text-muted fs-7">Se requiere y se recomienda que el código de categoría sea único.</div>
             <!--end::Description-->
           </div>
+          <!--end::Input group-->
           <!--end::Input group-->
 
           <!--begin::Input group-->
@@ -34,7 +37,7 @@
             <label class="required form-label">Nombre de la {{ titleModule }}</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input type="text" name="category_name" class="form-control mb-2" placeholder="Escriba el nombre de la marca" formControlName="name" />
+            <input type="text" class="form-control mb-2" placeholder="Escriba el nombre de la marca" formControlName="name" />
             <!--end::Input-->
             <!--begin::Description-->
             <div class="text-muted fs-7">Se requiere y se recomienda que el nombre de categoría sea único.</div>
@@ -49,13 +52,15 @@
 
       <div class="d-flex justify-content-end">
         <!--begin::Button-->
-        <a routerLink="/admin/mantenimientos/marcas" class="btn btn-light me-5">Cancel</a>
+        <a routerLink="/admin/mantenimientos/marcas" class="btn btn-bg-secondary me-5">
+          <i class="fa fa-arrow-left"></i>
+          <span class="indicator-label">Regresar</span>
+        </a>
         <!--end::Button-->
         <!--begin::Button-->
         <button type="submit" class="btn btn-primary">
-          <span class="indicator-label">Save Changes</span>
-          <span class="indicator-progress">Please wait...
-          <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+          <i class="fa fa-save"></i>
+          <span class="indicator-label">{{ isUpdate }}</span>
         </button>
         <!--end::Button-->
       </div>

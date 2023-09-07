@@ -82,7 +82,7 @@
               Acciones
             </mat-header-cell>
             <mat-cell *matCellDef="let brand" data-label="Acciones" class="mt-4">
-              <a href="#" class="btn btn-primary margin-btn">
+              <a [routerLink]="['/admin/mantenimientos/marca', brand.id]" class="btn btn-primary margin-btn">
                 <i class="bi bi-pencil-fill fs-4 me-2"></i>
                 Editar
               </a>
