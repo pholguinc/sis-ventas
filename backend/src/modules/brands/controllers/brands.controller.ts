@@ -13,7 +13,7 @@ import { CreateBrandDto, UpdateBrandDto } from '../dto/brand.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
-@UseGuards(AuthGuard('jwt'))
+//@UseGuards(AuthGuard('jwt'))
 @ApiTags('Brands')
 @Controller('brands')
 export class BrandsController {

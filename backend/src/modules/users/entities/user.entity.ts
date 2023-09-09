@@ -1,9 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
-import { Exclude } from 'class-transformer';
+import { Exclude, Type } from 'class-transformer';
 
 import { DateAt } from '../../../database/date-at.entity';
 import { Sale } from '../../sales/entities/sale.entity';
+import { ROLES } from '../../../constants/roles';
 
 @Entity({ name: 'users' })
 export class User {
@@ -34,6 +35,9 @@ export class User {
 
   @Column({ type: 'text' })
   address: string;
+
+  @Column({ type: 'enum', enum: ROLES })
+  role: ROLES;
 
   @OneToMany(() => Sale, (sale) => sale.user)
   sales: Sale[];

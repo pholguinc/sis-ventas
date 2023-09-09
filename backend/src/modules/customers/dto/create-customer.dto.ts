@@ -6,7 +6,7 @@ export class CreateCustomerDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  readonly names: string;
+  readonly name: string;
 
   @IsString()
   @IsNotEmpty()
