@@ -1,4 +1,219 @@
 <div class="row g-5 g-xl-10 mb-xl-10">
+
+  <!--begin::Col-->
+  <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
+    <!--begin::Card Usuarios-->
+    <div
+      class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
+      style="
+        background-color: #080655;
+        background-image: url('assets/media/svg/shapes/wave-bg-dark.svg');
+      "
+    >
+      <!--begin::Header-->
+      <div class="card-header pt-5">
+
+        <!--begin::Title-->
+        <div class="d-flex flex-row align-items-center justify-content-between">
+          <!-- Icon -->
+           <!-- Replace "fa-icon-class-name" with your desired icon class name -->
+
+          <!-- Amount -->
+          <span class="fs-5hx fw-bolder text-white lh-1 ls-n2 mt-3">{{ totalUsers }}</span>
+        </div>
+        <i class="fs-4hx text-white fa fa-user-tie me-2 mt-3"></i>
+
+        <!--end::Title-->
+      </div>
+      <!--end::Header-->
+      <!--begin::Card body-->
+      <div class="card-body d-flex align-items-end pt-0">
+        <!--begin::Progress-->
+        <div class="d-flex align-items-center flex-column mt-3 w-100">
+          <div
+            class="d-flex justify-content-between fw-bolder fs-6 text-white opacity-50 w-100 mt-auto mb-2"
+          >
+            <span>Usuarios Registrados</span>
+            <span>{{ totalUsers}}</span>
+          </div>
+          <div class="h-8px mx-3 w-100 bg-light-danger rounded">
+            <div
+              class="bg-danger rounded h-8px"
+              role="progressbar"
+              style="width: 100%"
+              aria-valuenow="50"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+        </div>
+        <!--end::Progress-->
+      </div>
+      <!--end::Card body-->
+    </div>
+    <!--end::Card Usuarios-->
+    <!--begin::Card Categorías-->
+     <div
+      class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
+      style="
+        background-color: #080655;
+        background-image: url('assets/media/svg/shapes/wave-bg-dark.svg');
+      "
+    >
+      <!--begin::Header-->
+      <div class="card-header pt-5">
+
+        <!--begin::Title-->
+        <div class="d-flex flex-row align-items-center justify-content-between">
+          <!-- Icon -->
+           <!-- Replace "fa-icon-class-name" with your desired icon class name -->
+
+          <!-- Amount -->
+          <span class="fs-5hx fw-bolder text-white lh-1 ls-n2 mt-3">{{ totalCustomers }}</span>
+        </div>
+        <i class="fs-4hx text-white fa fa-tags me-2 mt-3"></i>
+
+
+        <!--end::Title-->
+      </div>
+      <!--end::Header-->
+      <!--begin::Card body-->
+      <div class="card-body d-flex align-items-end pt-0">
+        <!--begin::Progress-->
+        <div class="d-flex align-items-center flex-column mt-3 w-100">
+          <div
+            class="d-flex justify-content-between fw-bolder fs-6 text-white opacity-50 w-100 mt-auto mb-2"
+          >
+            <span>Categorías Registradas</span>
+            <span>{{ totalCustomers }}</span>
+          </div>
+          <div class="h-8px mx-3 w-100 bg-light-danger rounded">
+            <div
+              class="bg-danger rounded h-8px"
+              role="progressbar"
+              style="width: 100%"
+              aria-valuenow="50"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+        </div>
+        <!--end::Progress-->
+      </div>
+      <!--end::Card body-->
+    </div>
+    <!--end::Card Categorías-->
+  </div>
+  <!--end::Col-->
+
+  <!--begin::Col-->
+  <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
+    <!--begin::Card Clientes-->
+    <div
+      class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
+      style="
+        background-color: #080655;
+        background-image: url('assets/media/svg/shapes/wave-bg-dark.svg');
+      "
+    >
+      <!--begin::Header-->
+      <div class="card-header pt-5">
+
+        <!--begin::Title-->
+        <div class="d-flex flex-row align-items-center justify-content-between">
+          <!-- Icon -->
+           <!-- Replace "fa-icon-class-name" with your desired icon class name -->
+
+          <!-- Amount -->
+          <span class="fs-5hx fw-bolder text-white lh-1 ls-n2 mt-3">{{ totalCustomers }}</span>
+        </div>
+        <i class="fs-4hx text-white fa fa-user me-2 mt-3"></i>
+
+
+
+        <!--end::Title-->
+      </div>
+      <!--end::Header-->
+      <!--begin::Card body-->
+      <div class="card-body d-flex align-items-end pt-0">
+        <!--begin::Progress-->
+        <div class="d-flex align-items-center flex-column mt-3 w-100">
+          <div
+            class="d-flex justify-content-between fw-bolder fs-6 text-white opacity-50 w-100 mt-auto mb-2"
+          >
+            <span>Clientes Registrados</span>
+            <span>{{ totalCustomers }}</span>
+          </div>
+          <div class="h-8px mx-3 w-100 bg-light-danger rounded">
+            <div
+              class="bg-danger rounded h-8px"
+              role="progressbar"
+              style="width: 100%"
+              aria-valuenow="50"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+        </div>
+        <!--end::Progress-->
+      </div>
+      <!--end::Card body-->
+    </div>
+    <!--end::Card Clientes-->
+   <!--begin::Card Marcas-->
+   <div
+   class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
+   style="
+     background-color: #080655;
+     background-image: url('assets/media/svg/shapes/wave-bg-dark.svg');
+   "
+ >
+   <!--begin::Header-->
+   <div class="card-header pt-5">
+
+     <!--begin::Title-->
+     <div class="d-flex flex-row align-items-center justify-content-between">
+       <!-- Icon -->
+        <!-- Replace "fa-icon-class-name" with your desired icon class name -->
+
+       <!-- Amount -->
+       <span class="fs-5hx fw-bolder text-white lh-1 ls-n2 mt-3">{{ totalBrands }}</span>
+     </div>
+     <i class="fs-4hx text-white fa fa-copyright me-2 mt-3"></i>
+
+
+
+     <!--end::Title-->
+   </div>
+   <!--end::Header-->
+   <!--begin::Card body-->
+   <div class="card-body d-flex align-items-end pt-0">
+     <!--begin::Progress-->
+     <div class="d-flex align-items-center flex-column mt-3 w-100">
+       <div
+         class="d-flex justify-content-between fw-bolder fs-6 text-white opacity-50 w-100 mt-auto mb-2"
+       >
+         <span>Marcas Registradas</span>
+         <span>{{ totalBrands }}</span>
+       </div>
+       <div class="h-8px mx-3 w-100 bg-light-danger rounded">
+         <div
+           class="bg-danger rounded h-8px"
+           role="progressbar"
+           style="width: 100%"
+           aria-valuenow="50"
+           aria-valuemin="0"
+           aria-valuemax="100"
+         ></div>
+       </div>
+     </div>
+     <!--end::Progress-->
+   </div>
+   <!--end::Card body-->
+ </div>
+ <!--end::Card Marcas-->
+  </div>
+  <!--end::Col-->
   <!--begin::Col-->
   <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
     <!--begin::Card widget 16-->
@@ -18,10 +233,9 @@
            <!-- Replace "fa-icon-class-name" with your desired icon class name -->
 
           <!-- Amount -->
-          <span class="fs-5hx fw-bolder text-white lh-1 ls-n2 mt-3">{{ totalBrands }}</span>
+          <span class="fs-5hx fw-bolder text-white lh-1 ls-n2 mt-3">{{ totalCustomers }}</span>
         </div>
-        <i class="fs-4hx text-white fa fa-copyright me-2 mt-3"></i>
-
+        <i class="fs-4hx text-white fa fa-tags me-2 mt-3"></i>
 
 
         <!--end::Title-->
@@ -34,8 +248,8 @@
           <div
             class="d-flex justify-content-between fw-bolder fs-6 text-white opacity-50 w-100 mt-auto mb-2"
           >
-            <span>Marcas Registradas</span>
-            <span>{{ totalBrands }}</span>
+            <span>Categorías Registradas</span>
+            <span>{{ totalCustomers }}</span>
           </div>
           <div class="h-8px mx-3 w-100 bg-light-danger rounded">
             <div
@@ -209,212 +423,5 @@
     <!--end::Card widget 16-->
   </div>
   <!--end::Col-->
-  <!--begin::Col-->
-  <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
-    <!--begin::Card widget 16-->
-    <div
-      class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-      style="
-        background-color: #080655;
-        background-image: url('assets/media/svg/shapes/wave-bg-dark.svg');
-      "
-    >
-      <!--begin::Header-->
-      <div class="card-header pt-5">
-        <!--begin::Title-->
-        <div class="card-title d-flex flex-column">
-          <!--begin::Amount-->
-          <span class="fs-2hx fw-bolder text-white me-2 lh-1 ls-n2">69</span>
-          <!--end::Amount-->
-          <!--begin::Subtitle-->
-          <span class="text-white opacity-50 pt-1 fw-bold fs-6"
-            >Active Projects</span
-          >
-          <!--end::Subtitle-->
-        </div>
-        <!--end::Title-->
-      </div>
-      <!--end::Header-->
-      <!--begin::Card body-->
-      <div class="card-body d-flex align-items-end pt-0">
-        <!--begin::Progress-->
-        <div class="d-flex align-items-center flex-column mt-3 w-100">
-          <div
-            class="d-flex justify-content-between fw-bolder fs-6 text-white opacity-50 w-100 mt-auto mb-2"
-          >
-            <span>43 Pending</span>
-            <span>72%</span>
-          </div>
-          <div class="h-8px mx-3 w-100 bg-light-danger rounded">
-            <div
-              class="bg-danger rounded h-8px"
-              role="progressbar"
-              style="width: 72%"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-        </div>
-        <!--end::Progress-->
-      </div>
-      <!--end::Card body-->
-    </div>
-    <!--end::Card widget 16-->
-    <!--begin::Card widget 16-->
-    <div
-      class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-      style="
-        background-color: #080655;
-        background-image: url('assets/media/svg/shapes/wave-bg-dark.svg');
-      "
-    >
-      <!--begin::Header-->
-      <div class="card-header pt-5">
-        <!--begin::Title-->
-        <div class="card-title d-flex flex-column">
-          <!--begin::Amount-->
-          <span class="fs-2hx fw-bolder text-white me-2 lh-1 ls-n2">69</span>
-          <!--end::Amount-->
-          <!--begin::Subtitle-->
-          <span class="text-white opacity-50 pt-1 fw-bold fs-6"
-            >Active Projects</span
-          >
-          <!--end::Subtitle-->
-        </div>
-        <!--end::Title-->
-      </div>
-      <!--end::Header-->
-      <!--begin::Card body-->
-      <div class="card-body d-flex align-items-end pt-0">
-        <!--begin::Progress-->
-        <div class="d-flex align-items-center flex-column mt-3 w-100">
-          <div
-            class="d-flex justify-content-between fw-bolder fs-6 text-white opacity-50 w-100 mt-auto mb-2"
-          >
-            <span>43 Pending</span>
-            <span>72%</span>
-          </div>
-          <div class="h-8px mx-3 w-100 bg-light-danger rounded">
-            <div
-              class="bg-danger rounded h-8px"
-              role="progressbar"
-              style="width: 72%"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-        </div>
-        <!--end::Progress-->
-      </div>
-      <!--end::Card body-->
-    </div>
-    <!--end::Card widget 16-->
-  </div>
-  <!--end::Col-->
-  <!--begin::Col-->
-  <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
-    <!--begin::Card widget 16-->
-    <div
-      class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-      style="
-        background-color: #080655;
-        background-image: url('assets/media/svg/shapes/wave-bg-dark.svg');
-      "
-    >
-      <!--begin::Header-->
-      <div class="card-header pt-5">
-        <!--begin::Title-->
-        <div class="card-title d-flex flex-column">
-          <!--begin::Amount-->
-          <span class="fs-2hx fw-bolder text-white me-2 lh-1 ls-n2">69</span>
-          <!--end::Amount-->
-          <!--begin::Subtitle-->
-          <span class="text-white opacity-50 pt-1 fw-bold fs-6"
-            >Active Projects</span
-          >
-          <!--end::Subtitle-->
-        </div>
-        <!--end::Title-->
-      </div>
-      <!--end::Header-->
-      <!--begin::Card body-->
-      <div class="card-body d-flex align-items-end pt-0">
-        <!--begin::Progress-->
-        <div class="d-flex align-items-center flex-column mt-3 w-100">
-          <div
-            class="d-flex justify-content-between fw-bolder fs-6 text-white opacity-50 w-100 mt-auto mb-2"
-          >
-            <span>43 Pending</span>
-            <span>72%</span>
-          </div>
-          <div class="h-8px mx-3 w-100 bg-light-danger rounded">
-            <div
-              class="bg-danger rounded h-8px"
-              role="progressbar"
-              style="width: 72%"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-        </div>
-        <!--end::Progress-->
-      </div>
-      <!--end::Card body-->
-    </div>
-    <!--end::Card widget 16-->
-    <!--begin::Card widget 16-->
-    <div
-      class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-      style="
-        background-color: #080655;
-        background-image: url('assets/media/svg/shapes/wave-bg-dark.svg');
-      "
-    >
-      <!--begin::Header-->
-      <div class="card-header pt-5">
-        <!--begin::Title-->
-        <div class="card-title d-flex flex-column">
-          <!--begin::Amount-->
-          <span class="fs-2hx fw-bolder text-white me-2 lh-1 ls-n2">69</span>
-          <!--end::Amount-->
-          <!--begin::Subtitle-->
-          <span class="text-white opacity-50 pt-1 fw-bold fs-6"
-            >Active Projects</span
-          >
-          <!--end::Subtitle-->
-        </div>
-        <!--end::Title-->
-      </div>
-      <!--end::Header-->
-      <!--begin::Card body-->
-      <div class="card-body d-flex align-items-end pt-0">
-        <!--begin::Progress-->
-        <div class="d-flex align-items-center flex-column mt-3 w-100">
-          <div
-            class="d-flex justify-content-between fw-bolder fs-6 text-white opacity-50 w-100 mt-auto mb-2"
-          >
-            <span>43 Pending</span>
-            <span>72%</span>
-          </div>
-          <div class="h-8px mx-3 w-100 bg-light-danger rounded">
-            <div
-              class="bg-danger rounded h-8px"
-              role="progressbar"
-              style="width: 72%"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-        </div>
-        <!--end::Progress-->
-      </div>
-      <!--end::Card body-->
-    </div>
-    <!--end::Card widget 16-->
-  </div>
-  <!--end::Col-->
+
 </div>
