@@ -25,6 +25,7 @@ import { BrandFormComponent } from './brands/brand-form.component';
 import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerFormComponent } from './customers/customer-form.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RolesComponent,
     InventoryComponent,
     BrandFormComponent,
+    CustomerFormComponent,
   ],
   imports: [
     CommonModule,

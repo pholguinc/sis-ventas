@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrandsComponent } from './brands/brands.component';
 import { CustomersComponent } from './customers/customers.component';
 import { BrandFormComponent } from './brands/brand-form.component';
+import { CustomerFormComponent } from './customers/customer-form.component';
 
 //Componentes
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'mantenimientos/marcas', component: BrandsComponent },
       { path: 'mantenimientos/marca/:id', component: BrandFormComponent },
       { path: 'mantenimientos/clientes', component: CustomersComponent },
+      { path: 'mantenimientos/cliente/:id', component: CustomerFormComponent },
     ],
   },
 ];

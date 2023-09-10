@@ -14,7 +14,7 @@ import { CustomersService } from 'src/app/services/customers.service';
 export class CustomersComponent implements OnInit, AfterViewInit{
   customer: Customer[] = [];
   dataSource!: MatTableDataSource<Customer>;
-  displayedColumns: string[] = ['name', 'lastname_pater', 'lastname_mater', 'numDoc', 'phone', 'acciones'];
+  displayedColumns: string[] = ['name', 'lastname_pater','lastname_mater', 'numDoc', 'phone', 'acciones'];
   isLoading: boolean = false;
   resultsLength = 0;
 

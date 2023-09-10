@@ -1,0 +1,129 @@
+<!--begin::Container-->
+<div class="container-xxl">
+  <form class="form d-flex flex-column flex-lg-row" [formGroup]="customerForm" (submit)="onSubmit()">
+    <!--begin::Main column-->
+    <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+      <!--begin::General options-->
+      <div class="card card-flush py-4">
+        <!--begin::Card header-->
+        <div class="card-header">
+          <div class="card-title">
+            <h2>{{ title }}</h2>
+          </div>
+        </div>
+        <!--end::Card header-->
+        <!--begin::Card body-->
+        <div class="card-body pt-0">
+
+          <!--end::Input group-->
+
+          <!--begin::Input group-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label">Nombre de la {{ titleModule }}</label>
+            <!--end::Label-->
+            <!--begin::Input-->
+            <input type="text" class="form-control mb-2" placeholder="Escriba el nombre de la marca" formControlName="name" />
+            <!--end::Input-->
+          </div>
+          <!--end::Input group-->
+
+          <!--begin::Input group-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label">Apellido Paterno del {{ titleModule }}</label>
+            <!--end::Label-->
+            <!--begin::Input-->
+            <input type="text" class="form-control mb-2" placeholder="Escriba el nombre de la marca" formControlName="lastname_pater" />
+            <!--end::Input-->
+          </div>
+          <!--end::Input group-->
+
+          <!--begin::Input group-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label">Apellido Materno del {{ titleModule }}</label>
+            <!--end::Label-->
+            <!--begin::Input-->
+            <input type="text" class="form-control mb-2" placeholder="Escriba el nombre de la marca" formControlName="lastname_mater" />
+            <!--end::Input-->
+          </div>
+          <!--end::Input group-->
+
+          <!--begin::Input group-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label">Documento del {{ titleModule }}</label>
+            <!--end::Label-->
+            <!--begin::Input-->
+            <input type="string" class="form-control mb-2" placeholder="Escriba el documento del cliente" formControlName="numDoc" />
+            <!--end::Input-->
+            <!--begin::Description-->
+            <div class="text-muted fs-7">Se requiere y se recomienda que el documento del cliente sea único.</div>
+            <!--end::Description-->
+          </div>
+          <!--end::Input group-->
+
+           <!--begin::Input group-->
+           <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label">Correo del {{ titleModule }}</label>
+            <!--end::Label-->
+            <!--begin::Input-->
+            <input type="string" class="form-control mb-2" placeholder="Escriba el correo del cliente" formControlName="email" />
+            <!--end::Input-->
+            <!--begin::Description-->
+            <div class="text-muted fs-7">Se requiere y se recomienda que el correo del cliente sea único.</div>
+            <!--end::Description-->
+          </div>
+          <!--end::Input group-->
+
+           <!--begin::Input group-->
+           <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label">Celular del {{ titleModule }}</label>
+            <!--end::Label-->
+            <!--begin::Input-->
+            <input type="string" class="form-control mb-2" placeholder="Escriba el celular del cliente" formControlName="phone" />
+            <!--end::Input-->
+            <!--begin::Description-->
+            <div class="text-muted fs-7">Se requiere y se recomienda que el celular del cliente sea único.</div>
+            <!--end::Description-->
+          </div>
+          <!--end::Input group-->
+
+           <!--begin::Input group-->
+           <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label">Dirección del {{ titleModule }}</label>
+            <!--end::Label-->
+            <!--begin::Input-->
+            <input type="string" class="form-control mb-2" placeholder="Escriba la dirección del cliente" formControlName="address" />
+            <!--end::Input-->
+          </div>
+          <!--end::Input group-->
+
+        </div>
+        <!--end::Card header-->
+      </div>
+      <!--end::General options-->
+
+      <div class="d-flex justify-content-end">
+        <!--begin::Button-->
+        <a routerLink="/admin/mantenimientos/clientes" class="btn btn-bg-secondary me-5">
+          <i class="fa fa-arrow-left"></i>
+          <span class="indicator-label">Regresar</span>
+        </a>
+        <!--end::Button-->
+        <!--begin::Button-->
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-save"></i>
+          <span class="indicator-label">{{ isUpdate }}</span>
+        </button>
+        <!--end::Button-->
+      </div>
+    </div>
+    <!--end::Main column-->
+  </form>
+</div>
+<!--end::Container-->
