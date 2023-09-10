@@ -28,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerFormComponent } from './customers/customer-form.component';
 import { CategoryFormComponent } from './almacen/categories/category-form.component';
 import { ProductFormComponent } from './almacen/products/product-form.component';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ProductFormComponent } from './almacen/products/product-form.component'
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    CdkVirtualScrollViewport
   ],
   exports: [DashboardComponent, BrandsComponent, CustomersComponent],
 })

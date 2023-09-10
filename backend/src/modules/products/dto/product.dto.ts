@@ -29,11 +29,6 @@ export class CreateProductDto {
   @ApiProperty()
   readonly stock: number;
 
-  @IsUrl()
-  @IsNotEmpty()
-  @ApiProperty()
-  readonly image: string;
-
   @IsNotEmpty()
   @ApiProperty()
   readonly brandId: string;

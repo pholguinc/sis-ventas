@@ -31,9 +31,6 @@ export class Product {
   @Column({ type: 'int' })
   stock: number;
 
-  @Column({ type: 'varchar' })
-  image: string;
-
   @Column(() => DateAt, { prefix: false })
   register: DateAt;
 

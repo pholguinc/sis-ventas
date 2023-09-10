@@ -77,15 +77,51 @@
             </mat-cell>
           </ng-container>
 
+          <ng-container matColumnDef="category">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Categoría
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="mt-4">
+              {{ row.category.name }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Precio Compra
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="mt-4">
+              {{ row.price }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="price_sale">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Precio Compra
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="mt-4">
+              {{ row.price }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="brand">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Marca
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="mt-4">
+              {{ row.brand.name }}
+            </mat-cell>
+          </ng-container>
+
           <ng-container matColumnDef="acciones">
             <mat-header-cell *matHeaderCellDef mat-sort-header>
               Acciones
             </mat-header-cell>
-            <mat-cell *matCellDef="let category" data-label="Acciones" class="mt-4">
-              <a [routerLink]="['/admin/almacen/categoria', category.id]" class="btn  btn-primary margin-btn">
+            <mat-cell *matCellDef="let product" data-label="Acciones" class="mt-4">
+              <a [routerLink]="['/admin/almacen/categoria', product.id]" class="btn btn-primary margin-btn">
                 <i class="bi bi-pencil-fill fs-4"></i>
               </a>
-              <a class="btn btn-danger" (click)="deleteCategory(category)">
+              <a class="btn btn-danger" (click)="deleteProduct(product)">
                 <i class="bi bi-trash-fill fs-4"></i>
               </a>
             </mat-cell>

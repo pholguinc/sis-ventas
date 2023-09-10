@@ -22,12 +22,10 @@ export class ProductsService {
   async create(data: CreateProductDto) {
     try {
       const newProduct = new Product();
-      newProduct.image = data.image;
       newProduct.name = data.name;
       newProduct.description = data.description;
       newProduct.price = data.price;
       newProduct.stock = data.stock;
-      newProduct.image = data.image;
 
       const brand = await this.brandRepo.findOne({
         where: { id: data.brandId },
@@ -41,7 +39,7 @@ export class ProductsService {
       }
 
       newProduct.brand = brand;
-      //newProduct.category = category;
+      newProduct.category = category;
 
       return this.productRepo.save(newProduct);
     } catch (error) {
@@ -56,11 +54,11 @@ export class ProductsService {
         select: {
           category: {
             id: false,
-            name: true, // Include only the name property of category
+            name: true,
           },
           brand: {
             id: false,
-            name: true, // Include only the name property of brand
+            name: true,
             code: true,
           },
         },
@@ -131,7 +129,6 @@ export class ProductsService {
         updateProductDto.description || productToUpdate.description;
       productToUpdate.price = updateProductDto.price || productToUpdate.price;
       productToUpdate.stock = updateProductDto.stock || productToUpdate.stock;
-      productToUpdate.image = updateProductDto.image || productToUpdate.image;
 
       return await this.productRepo.save(productToUpdate);
     } catch (error) {
