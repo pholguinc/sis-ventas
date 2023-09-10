@@ -10,6 +10,8 @@ import { BrandFormComponent } from './brands/brand-form.component';
 import { CustomerFormComponent } from './customers/customer-form.component';
 import { CategoriesComponent } from './almacen/categories/categories.component';
 import { CategoryFormComponent } from './almacen/categories/category-form.component';
+import { ProductsComponent } from './almacen/products/products.component';
+import { ProductFormComponent } from './almacen/products/product-form.component';
 
 //Componentes
 const routes: Routes = [
@@ -21,6 +23,8 @@ const routes: Routes = [
       //Almacén
       { path: 'almacen/categorias', component: CategoriesComponent },
       { path: 'almacen/categoria/:id', component: CategoryFormComponent },
+      { path: 'almacen/productos', component: ProductsComponent },
+      { path: 'almacen/producto/:id', component: ProductFormComponent },
 
       //Mantenimientos
       { path: 'mantenimientos/marcas', component: BrandsComponent },

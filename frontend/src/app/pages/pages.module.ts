@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerFormComponent } from './customers/customer-form.component';
 import { CategoryFormComponent } from './almacen/categories/category-form.component';
+import { ProductFormComponent } from './almacen/products/product-form.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { CategoryFormComponent } from './almacen/categories/category-form.compon
     CustomerFormComponent,
     CategoriesComponent,
     CategoryFormComponent,
+    ProductFormComponent,
   ],
   imports: [
     CommonModule,

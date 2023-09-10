@@ -3,8 +3,10 @@ import { CustomersService } from './../../services/customers.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/models/brand.model';
+import { Category } from 'src/app/models/category.model';
 import { User } from 'src/app/models/user.model';
 import { BrandsService } from 'src/app/services/brands.service';
+import { CategoriesService } from 'src/app/services/categories.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -17,14 +19,18 @@ export class DashboardComponent implements OnInit {
   brand: Brand[] = [];
   customer: Customer[] = [];
   user: User[] = [];
+  category: Category[] = [];
+
   public totalBrands: number = 0;
   public totalCustomers: number = 0;
   public totalUsers: number = 0;
+  public totalCategories: number = 0;
 
   constructor(
     private brandsService: BrandsService,
     private customersService: CustomersService,
-    private UsersService: UsersService
+    private UsersService: UsersService,
+    private categoriesService: CategoriesService
 
     ){}
 
@@ -33,6 +39,7 @@ export class DashboardComponent implements OnInit {
     this.brandsData();
     this.customersData();
     this.usersData();
+    this.categoriesData();
   }
 
 
@@ -69,6 +76,19 @@ export class DashboardComponent implements OnInit {
       next: (res)=>{
         this.user =res;
         this.totalUsers= this.user.length;
+      },
+      error: (err)=>{
+        console.warn(err.error.msg)
+      }
+    })
+  }
+
+  categoriesData(){
+    this.categoriesService.loadCategories()
+    .subscribe({
+      next: (res)=>{
+        this.category=res;
+        this.totalCategories= this.category.length;
       },
       error: (err)=>{
         console.warn(err.error.msg)

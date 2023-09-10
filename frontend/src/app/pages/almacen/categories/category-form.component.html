@@ -1,1 +1,71 @@
-<p>category-form works!</p>
+<!--begin::Container-->
+<div class="container-xxl">
+  <form class="form d-flex flex-column flex-lg-row" [formGroup]="categoryForm" (submit)="onSubmit()">
+    <!--begin::Main column-->
+    <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+      <!--begin::General options-->
+      <div class="card card-flush py-4">
+        <!--begin::Card header-->
+        <div class="card-header">
+          <div class="card-title">
+            <h2>{{ title }}</h2>
+          </div>
+        </div>
+        <!--end::Card header-->
+        <!--begin::Card body-->
+        <div class="card-body pt-0">
+          <!--begin::Input group-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label">Código de la {{ titleModule }}</label>
+            <!--end::Label-->
+            <!--begin::Input-->
+
+            <input type="text" class="form-control mb-2" placeholder="Escriba el código de la marca" formControlName="code" />
+
+            <!--end::Input-->
+            <!--begin::Description-->
+            <div class="text-muted fs-7">Se requiere y se recomienda que el código de categoría sea único.</div>
+            <!--end::Description-->
+          </div>
+          <!--end::Input group-->
+          <!--end::Input group-->
+
+          <!--begin::Input group-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label">Nombre de la {{ titleModule }}</label>
+            <!--end::Label-->
+            <!--begin::Input-->
+            <input type="text" class="form-control mb-2" placeholder="Escriba el nombre de la marca" formControlName="name" />
+            <!--end::Input-->
+            <!--begin::Description-->
+            <div class="text-muted fs-7">Se requiere y se recomienda que el nombre de la categoría sea único.</div>
+            <!--end::Description-->
+          </div>
+          <!--end::Input group-->
+
+        </div>
+        <!--end::Card header-->
+      </div>
+      <!--end::General options-->
+
+      <div class="d-flex justify-content-end">
+        <!--begin::Button-->
+        <a routerLink="/admin/almacen/categorias" class="btn btn-bg-secondary me-5">
+          <i class="fa fa-arrow-left"></i>
+          <span class="indicator-label">Regresar</span>
+        </a>
+        <!--end::Button-->
+        <!--begin::Button-->
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-save"></i>
+          <span class="indicator-label">{{ isUpdate }}</span>
+        </button>
+        <!--end::Button-->
+      </div>
+    </div>
+    <!--end::Main column-->
+  </form>
+</div>
+<!--end::Container-->

@@ -20,6 +20,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['code', 'name', 'acciones'];
   isLoading: boolean = false;
   resultsLength = 0;
+  public titleData: string = 'categoría';
 
   constructor(private categoriesService: CategoriesService) {}
 
@@ -58,7 +59,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
 
   deleteCategory(category: Category): void {
     Swal.fire({
-      title: `¿Estás seguro de eliminar la marca ${category.name}?`,
+      title: `¿Estás seguro de eliminar la ${this.titleData} ${category.name}?`,
       text: 'Al eliminarlo no podrá recuperarlo',
       icon: 'info',
       buttonsStyling: false,
@@ -76,7 +77,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
           next: (res)=>{
             this.loadData();
             Swal.fire({
-              text: "¡Marca eliminada correctamente!",
+              text: `¡La ${this.titleData} fue eliminada correctamente!`,
               icon: "success",
               buttonsStyling: false,
               confirmButtonText: "Ok",
