@@ -8,8 +8,8 @@ import { BrandsComponent } from './brands/brands.component';
 import { CustomersComponent } from './customers/customers.component';
 import { BrandFormComponent } from './brands/brand-form.component';
 import { CustomerFormComponent } from './customers/customer-form.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { CategoriesFormComponent } from './categories/categories-form.component';
+import { CategoriesComponent } from './almacen/categories/categories.component';
+import { CategoryFormComponent } from './almacen/categories/category-form.component';
 
 //Componentes
 const routes: Routes = [
@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: '', component: DashboardComponent },
       //Almacén
       { path: 'almacen/categorias', component: CategoriesComponent },
-      { path: 'almacen/categoria/:id', component: CategoriesFormComponent },
+      { path: 'almacen/categoria/:id', component: CategoryFormComponent },
 
       //Mantenimientos
       { path: 'mantenimientos/marcas', component: BrandsComponent },
