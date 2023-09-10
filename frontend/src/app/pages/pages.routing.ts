@@ -8,6 +8,8 @@ import { BrandsComponent } from './brands/brands.component';
 import { CustomersComponent } from './customers/customers.component';
 import { BrandFormComponent } from './brands/brand-form.component';
 import { CustomerFormComponent } from './customers/customer-form.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoriesFormComponent } from './categories/categories-form.component';
 
 //Componentes
 const routes: Routes = [
@@ -16,10 +18,16 @@ const routes: Routes = [
     component: PagesComponent,
     children: [
       { path: '', component: DashboardComponent },
+      //Almacén
+      { path: 'almacen/categorias', component: CategoriesComponent },
+      { path: 'almacen/categoria/:id', component: CategoriesFormComponent },
+
+      //Mantenimientos
       { path: 'mantenimientos/marcas', component: BrandsComponent },
       { path: 'mantenimientos/marca/:id', component: BrandFormComponent },
       { path: 'mantenimientos/clientes', component: CustomersComponent },
       { path: 'mantenimientos/cliente/:id', component: CustomerFormComponent },
+
     ],
   },
 ];

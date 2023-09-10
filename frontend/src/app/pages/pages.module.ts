@@ -26,6 +26,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerFormComponent } from './customers/customer-form.component';
+import { CategoriesFormComponent } from './categories/categories-form.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CustomerFormComponent } from './customers/customer-form.component';
     InventoryComponent,
     BrandFormComponent,
     CustomerFormComponent,
+    CategoriesFormComponent,
   ],
   imports: [
     CommonModule,

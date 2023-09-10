@@ -18,7 +18,7 @@ export class SidebarService {
     </span>`,
     iconMenu: '<span class="menu-arrow"></span>',
     submenu: [
-      {title: 'Categorías', url: 'mantenimientos/marcas'},
+      {title: 'Categorías', url: 'almacen/categorias'},
       {title: 'Productos', url: 'mantenimientos/clientes'},
       {title: 'Inventario', url: 'mantenimientos/clientes'}
     ]
@@ -35,8 +35,8 @@ export class SidebarService {
     </span>`,
     iconMenu: '<span class="menu-arrow"></span>',
     submenu: [
-      {title: 'Usuarios', url: 'mantenimientos/marcas'},
-      {title: 'Roles', url: 'mantenimientos/clientes'}
+      {title: 'Usuarios', url: 'mantenimientos/usuarios'},
+      {title: 'Roles', url: 'mantenimientos/roles'}
     ]
     },
     {
@@ -67,7 +67,7 @@ export class SidebarService {
     </span>`,
     iconMenu: '<span class="menu-arrow"></span>',
     submenu: [
-      {title: 'Ingreso de Productos', url: 'mantenimientos/marcas'},
+      {title: 'Ingreso de Productos', url: 'mantenimientos/productos'},
       {title: 'Detalle de Entradas', url: 'mantenimientos/marcas'},
     ]
     },
