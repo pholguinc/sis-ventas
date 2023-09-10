@@ -1,3 +1,4 @@
+import { User } from './../entities/user.entity';
 import {
   Controller,
   Get,
@@ -13,13 +14,14 @@ import { CreateUserDto, UpdateUserDto } from '../dto/user.dto';
 
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { Roles } from 'src/auth/decorators/roles.decorator';
 import { RolesGuard } from '../../../auth/guards/roles.guard';
-import { SuperAdmin } from 'src/auth/decorators/superadmin.decorator';
 import { Admin } from 'src/auth/decorators/admin.decorator';
+import { Public } from 'src/auth/decorators/public.decorator';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+
 //import { Public } from '../../../auth/decorators/public.decorator';
 
-@UseGuards(AuthGuard('jwt'), RolesGuard)
+@UseGuards(AuthGuard('jwt'))
 @ApiTags('Users')
 @Controller('users')
 export class UsersController {
@@ -32,7 +34,7 @@ export class UsersController {
   }
 
   //@Public() #Define si el endpoint es pública
-  @SuperAdmin()
+
   @Get()
   @ApiOperation({ summary: 'Petición HTTP para listar usuarios' })
   findAll() {
@@ -44,7 +46,7 @@ export class UsersController {
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
-  
+
   @Put(':id')
   @ApiOperation({ summary: 'Petición HTTP para actualizar usuarios' })
   async update(@Param('id') id: string, @Body() body: UpdateUserDto) {

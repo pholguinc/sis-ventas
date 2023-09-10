@@ -1,6 +1,7 @@
 import { Product } from '../../products/entities/product.entity';
 import { DateAt } from '../../../database/date-at.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/modules/users/entities/user.entity';
 
 @Entity({ name: 'brands' })
 export class Brand {
