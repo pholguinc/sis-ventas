@@ -41,7 +41,7 @@ export class BrandsService {
   }
 
   generateDynamicCode(count: number) {
-    const prefix = 'BRAND';
+    const prefix = 'MARCA';
     const formattedCount = String(count).padStart(5, '0');
     return `${prefix}-${formattedCount}`;
   }

@@ -10,6 +10,9 @@ export class Category {
   @Column({ type: 'varchar', length: 255, unique: true })
   name: string;
 
+  @Column({ type: 'varchar', length: 255, unique: true })
+  code: string;
+
   @Column(() => DateAt, { prefix: false })
   register: DateAt;
 

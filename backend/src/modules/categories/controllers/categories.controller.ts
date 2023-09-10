@@ -21,8 +21,8 @@ export class CategoriesController {
 
   @Post()
   @ApiOperation({ summary: 'Petición HTTP para crear categorías' })
-  create(@Body() createCategoryDto: CreateCategoryDto) {
-    return this.categoriesService.create(createCategoryDto);
+  create(@Body() data: CreateCategoryDto) {
+    return this.categoriesService.create(data);
   }
 
   @Get()

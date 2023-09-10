@@ -13,11 +13,31 @@ export class CategoriesService {
 
   async create(data: CreateCategoryDto) {
     try {
-      const newCategory = this.categoryRepo.create(data);
+      const countOfExistingBrands = await this.categoryRepo.count();
+
+      let dynamicCode;
+
+      if (data.code) {
+        dynamicCode = `CAT-${String(data.code).padStart(8, '0')}`;
+      } else {
+        dynamicCode = this.generateDynamicCode(countOfExistingBrands + 1);
+      }
+
+      const newCategory = this.categoryRepo.create({
+        ...data,
+        code: dynamicCode,
+      });
+
       return await this.categoryRepo.save(newCategory);
     } catch (error) {
       throw ErrorManager.createSignatureError(error.message);
     }
+  }
+
+  generateDynamicCode(count: number) {
+    const prefix = 'CAT';
+    const formattedCount = String(count).padStart(5, '0');
+    return `${prefix}-${formattedCount}`;
   }
 
   async findAll(): Promise<Category[]> {
