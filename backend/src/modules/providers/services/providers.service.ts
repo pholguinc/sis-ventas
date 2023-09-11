@@ -20,7 +20,11 @@ export class ProvidersService {
 
   async findAll(): Promise<Provider[]> {
     try {
-      const providers = await this.providerRepo.find();
+      const providers = await this.providerRepo.find({
+        order: {
+          name: 'ASC',
+        },
+      });
       if (providers.length === 0) {
         throw new ErrorManager({
           type: 'BAD_REQUEST',

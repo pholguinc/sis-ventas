@@ -42,7 +42,11 @@ export class CategoriesService {
 
   async findAll(): Promise<Category[]> {
     try {
-      const categories = await this.categoryRepo.find();
+      const categories = await this.categoryRepo.find({
+        order: {
+          name: 'ASC',
+        },
+      });
       if (categories.length === 0) {
         throw new ErrorManager({
           type: 'BAD_REQUEST',

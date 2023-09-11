@@ -36,7 +36,11 @@ export class CustomersService {
   }
   async findAll(): Promise<Customer[]> {
     try {
-      const users = await this.customerRepo.find();
+      const users = await this.customerRepo.find({
+        order: {
+          name: 'ASC',
+        },
+      });
       if (users.length === 0) {
         throw new ErrorManager({
           type: 'BAD_REQUEST',

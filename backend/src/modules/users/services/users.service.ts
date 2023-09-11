@@ -23,7 +23,11 @@ export class UsersService {
 
   async findAll(): Promise<User[]> {
     try {
-      const users = await this.userRepo.find();
+      const users = await this.userRepo.find({
+        order: {
+          names: 'ASC',
+        },
+      });
       if (users.length === 0) {
         throw new ErrorManager({
           type: 'BAD_REQUEST',

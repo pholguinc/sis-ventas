@@ -22,9 +22,6 @@ export class BrandFormComponent implements OnInit {
   public isLoading = false;
 
   public submitted = false;
-  dataSource!: MatTableDataSource<Brand>;
-
-  @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
   constructor(
     private brandsService: BrandsService,
@@ -67,7 +64,6 @@ export class BrandFormComponent implements OnInit {
               this.router.navigate(['admin/mantenimientos/marcas']);
             }
           });
-          this.dataSource.sort = this.sort;
           console.log('Post Success', res);
         },
         error: (err) => {
@@ -92,10 +88,6 @@ export class BrandFormComponent implements OnInit {
               this.router.navigate(['admin/mantenimientos/marcas']);
             }
           });
-          //this.dataSource.sort = this.sort;
-          this.dataSource.data.slice().sort((a,b) =>{
-            return a.name.localeCompare(b.name)
-          })
           console.log('Put Success', res);
         },
         error: (err) => {

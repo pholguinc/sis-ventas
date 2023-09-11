@@ -48,7 +48,11 @@ export class BrandsService {
 
   async findAll(): Promise<Brand[]> {
     try {
-      const brand = await this.brandRepo.find();
+      const brand = await this.brandRepo.find({
+        order: {
+          name: 'ASC',
+        },
+      });
       if (brand.length === 0) {
         throw new ErrorManager({
           type: 'BAD_REQUEST',

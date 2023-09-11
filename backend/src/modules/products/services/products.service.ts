@@ -51,6 +51,9 @@ export class ProductsService {
   async findAll(): Promise<Product[]> {
     try {
       const products = await this.productRepo.find({
+        order: {
+          name: 'ASC',
+        },
         relations: ['category', 'brand'],
         select: {
           category: {
