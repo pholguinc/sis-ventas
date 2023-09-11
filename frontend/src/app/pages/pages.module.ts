@@ -20,7 +20,6 @@ import { PosComponent } from './ventas/pos/pos.component';
 import { ConfigComponent } from './config/config.component';
 import { UsersComponent } from './admin/users/users.component';
 import { RolesComponent } from './admin/roles/roles.component';
-import { InventoryComponent } from './almacen/inventory/inventory.component';
 import { BrandFormComponent } from './brands/brand-form.component';
 import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,7 +27,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerFormComponent } from './customers/customer-form.component';
 import { CategoryFormComponent } from './almacen/categories/category-form.component';
 import { ProductFormComponent } from './almacen/products/product-form.component';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -41,7 +39,6 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
     ConfigComponent,
     UsersComponent,
     RolesComponent,
-    InventoryComponent,
     BrandFormComponent,
     CustomerFormComponent,
     CategoriesComponent,
@@ -62,7 +59,6 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    CdkVirtualScrollViewport
   ],
   exports: [DashboardComponent, BrandsComponent, CustomersComponent],
 })
