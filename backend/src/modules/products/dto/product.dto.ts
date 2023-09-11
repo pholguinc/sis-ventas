@@ -1,10 +1,12 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 import {
+  IsDecimal,
   IsNotEmpty,
   IsNumber,
   IsPositive,
   IsString,
   IsUrl,
+  Min,
 } from 'class-validator';
 
 export class CreateProductDto {
@@ -23,6 +25,12 @@ export class CreateProductDto {
   @IsPositive()
   @ApiProperty()
   readonly price: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  @IsPositive()
+  @ApiProperty()
+  readonly sale: number;
 
   @IsNumber()
   @IsNotEmpty()

@@ -24,10 +24,13 @@ export class Product {
   @Column({ type: 'text' })
   description: string;
 
-  @Index()
-  @Column({ type: 'int' })
+  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
   price: number;
 
+  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
+  sale: number;
+
+  @Index()
   @Column({ type: 'int' })
   stock: number;
 

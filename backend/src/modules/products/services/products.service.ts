@@ -25,6 +25,7 @@ export class ProductsService {
       newProduct.name = data.name;
       newProduct.description = data.description;
       newProduct.price = data.price;
+      newProduct.sale = data.sale;
       newProduct.stock = data.stock;
 
       const brand = await this.brandRepo.findOne({
