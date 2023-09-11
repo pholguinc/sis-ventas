@@ -1,6 +1,10 @@
 <!--begin::Container-->
 <div class="container-xxl">
-  <form class="form d-flex flex-column flex-lg-row" [formGroup]="categoryForm" (submit)="onSubmit()">
+  <form
+    class="form d-flex flex-column flex-lg-row"
+    [formGroup]="categoryForm"
+    (submit)="onSubmit()"
+  >
     <!--begin::Main column-->
     <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
       <!--begin::General options-->
@@ -17,15 +21,36 @@
           <!--begin::Input group-->
           <div class="mb-10 fv-row">
             <!--begin::Label-->
-            <label class="required form-label">Código de la {{ titleModule }}</label>
+            <label class="required form-label"
+              >Código de la {{ titleModule }}</label
+            >
             <!--end::Label-->
             <!--begin::Input-->
 
-            <input type="text" class="form-control mb-2" placeholder="Escriba el código de la marca" formControlName="code" />
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && categoryForm.get('code')?.errors
+                }"
+                placeholder="Escriba el código de la marca"
+                formControlName="code"
+                min="0"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && categoryForm.get('code')?.hasError('required')"
+              >
+                El código de la categoría es requerida
+              </div>
 
+            </div>
             <!--end::Input-->
             <!--begin::Description-->
-            <div class="text-muted fs-7">Se requiere y se recomienda que el código de categoría sea único.</div>
+            <div class="text-muted fs-7" *ngIf="!submitted">
+              Se requiere y se recomienda que el código de categoría sea único.
+            </div>
             <!--end::Description-->
           </div>
           <!--end::Input group-->
@@ -34,17 +59,45 @@
           <!--begin::Input group-->
           <div class="mb-10 fv-row">
             <!--begin::Label-->
-            <label class="required form-label">Nombre de la {{ titleModule }}</label>
+            <label class="required form-label"
+              >Nombre de la {{ titleModule }}</label
+            >
             <!--end::Label-->
             <!--begin::Input-->
-            <input type="text" class="form-control mb-2" placeholder="Escriba el nombre de la marca" formControlName="name" />
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && categoryForm.get('name')?.errors
+                }"
+                placeholder="Escriba el nombre de la categoría"
+                formControlName="name"
+                min="0"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && categoryForm.get('name')?.hasError('required')"
+              >
+                El nombre de la categoría es requerida
+              </div>
+
+            </div>
+            <div
+            class="invalid-feedback"
+            *ngIf="submitted && categoryForm.get('name')?.hasError('required')"
+          >
+            El código de la categoría es requerida
+          </div>
             <!--end::Input-->
             <!--begin::Description-->
-            <div class="text-muted fs-7">Se requiere y se recomienda que el nombre de la categoría sea único.</div>
+            <div class="text-muted fs-7" *ngIf="!submitted">
+              Se requiere y se recomienda que el nombre de la categoría sea
+              único.
+            </div>
             <!--end::Description-->
           </div>
           <!--end::Input group-->
-
         </div>
         <!--end::Card header-->
       </div>
@@ -52,7 +105,10 @@
 
       <div class="d-flex justify-content-end">
         <!--begin::Button-->
-        <a routerLink="/admin/almacen/categorias" class="btn btn-bg-secondary me-5">
+        <a
+          routerLink="/admin/almacen/categorias"
+          class="btn btn-bg-secondary me-5"
+        >
           <i class="fa fa-arrow-left"></i>
           <span class="indicator-label">Regresar</span>
         </a>

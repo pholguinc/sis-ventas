@@ -21,7 +21,7 @@ export interface PeriodicElement {
 
 export class ProductsComponent {
   dataSource!: MatTableDataSource<Product>;
-  displayedColumns: string[] = ['code', 'name','category','brand','price','sale','acciones'];
+  displayedColumns: string[] = ['name','stock','price','price_sale','acciones'];
   isLoading: boolean = false;
   resultsLength = 0;
 

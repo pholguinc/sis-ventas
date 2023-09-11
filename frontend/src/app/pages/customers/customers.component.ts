@@ -27,7 +27,7 @@ export class CustomersComponent implements OnInit, AfterViewInit{
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource();
