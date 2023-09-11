@@ -35,7 +35,7 @@
         type="text"
         (keyup)="applyFilter($event)"
         class="form-control form-control-solid w-250px ps-14"
-        placeholder="Buscar Categoría"
+        placeholder="Buscar Marcas"
       />
     </div>
     <!--end::Search-->
@@ -84,11 +84,9 @@
             <mat-cell *matCellDef="let brand" data-label="Acciones" class="mt-4">
               <a [routerLink]="['/admin/mantenimientos/marca', brand.id]" class="btn btn-primary margin-btn">
                 <i class="bi bi-pencil-fill fs-4 me-2"></i>
-                Editar
               </a>
               <a class="btn btn-danger" (click)="deleteBrand(brand)">
                 <i class="bi bi-trash-fill fs-4 me-2"></i>
-                Eliminar
               </a>
             </mat-cell>
           </ng-container>
