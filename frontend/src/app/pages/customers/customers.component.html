@@ -113,7 +113,7 @@
               <a [routerLink]="['/admin/mantenimientos/cliente', customer.id]" class="btn btn-primary margin-btn">
                 <i class="bi bi-pencil-fill fs-4 me-2"></i>
               </a>
-              <a class="btn btn-danger" >
+              <a class="btn btn-danger" (click)="deleteCustomer(customer)">
                 <i class="bi bi-trash-fill fs-4 me-2"></i>
               </a>
             </mat-cell>

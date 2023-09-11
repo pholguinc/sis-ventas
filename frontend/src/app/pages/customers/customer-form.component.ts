@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomersService } from './../../services/customers.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,11 +15,13 @@ export class CustomerFormComponent implements OnInit{
   public customerForm!: FormGroup;
   public title: string = '';
   public titleModule: string = 'Cliente';
+  public titleData: string = 'cliente';
   public isLoading = false;
 
   constructor(
     private customersService: CustomersService,
     private fb: FormBuilder,
+    private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -49,16 +51,19 @@ export class CustomerFormComponent implements OnInit{
       this.customersService.addCustomer(this.customerForm.value).subscribe({
         next: (res) => {
           Swal.fire({
-            title:"Correcto",
-            text: "¡La marca fue registrada correctamente!",
-            icon: "success",
+            title: 'Correcto',
+            text: `¡El ${this.titleData} fue registrado correctamente!`,
+            icon: 'success',
             buttonsStyling: false,
-            confirmButtonText: "Ok",
+            confirmButtonText: 'Ok',
             customClass: {
-                confirmButton: "btn btn-primary"
+              confirmButton: 'btn btn-primary',
+            },
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['admin/mantenimientos/clientes']);
             }
-        });
-
+          });
           console.log('Upload success', res);
         },
         error: (err) => {
@@ -74,6 +79,20 @@ export class CustomerFormComponent implements OnInit{
       this.customersService.updateCustomer(id, this.customerForm.value)
       .subscribe({
         next: (res)=>{
+          Swal.fire({
+            title: 'Correcto',
+            text: `¡El ${this.titleData} fue actualizado correctamente!`,
+            icon: 'success',
+            buttonsStyling: false,
+            confirmButtonText: 'Ok',
+            customClass: {
+              confirmButton: 'btn btn-primary',
+            },
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['admin/mantenimientos/clientes']);
+            }
+          });
           console.log('Actualizado', res)
         }
       })

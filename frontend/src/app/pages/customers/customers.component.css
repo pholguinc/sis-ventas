@@ -66,9 +66,7 @@ tr.nodata.mat-mdc-no-data-row.ng-star-inserted {
   }
 
 }
-
-
-/*mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-type {
+mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-type {
   padding-right: 4px;
 }
 
@@ -77,7 +75,7 @@ tr.nodata.mat-mdc-no-data-row.ng-star-inserted {
 }
 
 
-.mat-column-code {
+/*.mat-column-code {
   flex: 0.5;
 }
 
@@ -87,8 +85,7 @@ tr.nodata.mat-mdc-no-data-row.ng-star-inserted {
 
 .mat-column-acciones {
   flex: 0.3;
-}
-*/
+}*/
 
 .btn i {
   display: inline-flex;

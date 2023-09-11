@@ -77,6 +77,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
           next: (res)=>{
             this.loadData();
             Swal.fire({
+              title: 'Correcto',
               text: `¡La ${this.titleData} fue eliminada correctamente!`,
               icon: "success",
               buttonsStyling: false,

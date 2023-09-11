@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomersService } from 'src/app/services/customers.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-customers',
@@ -53,6 +54,41 @@ export class CustomersComponent implements OnInit, AfterViewInit{
   applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  deleteCustomer(customer: Customer): void {
+    Swal.fire({
+      title: `¿Estás seguro de eliminar a ${customer.name}?`,
+      text: 'Al eliminarlo no podrá recuperarlo',
+      icon: 'info',
+      buttonsStyling: false,
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'No',
+      customClass: {
+        confirmButton: 'btn btn-primary',
+        cancelButton: 'btn btn-danger',
+      },
+    }).then((result) => {
+      if (result.value) {
+        this.customersService.deleteCustomer(customer.id)
+        .subscribe({
+          next: (res)=>{
+            this.loadData();
+            Swal.fire({
+              text: "¡Cliente eliminado correctamente!",
+              icon: "success",
+              buttonsStyling: false,
+              confirmButtonText: "Ok",
+              customClass: {
+                  confirmButton: "btn btn-primary"
+              }
+          })
+
+          }
+        })
+      }
+    });
   }
 
 }
