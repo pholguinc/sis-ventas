@@ -12,14 +12,19 @@ export class CreateProviderDto {
   @ApiProperty()
   readonly ruc: string;
 
-  @IsUrl()
+  @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  readonly image: string;
+  readonly email: string;
 
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
   readonly phone: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  readonly address: string;
 }
 export class UpdateProviderDto extends PartialType(CreateProviderDto) {}

@@ -13,10 +13,13 @@ export class Provider {
   ruc: string;
 
   @Column({ type: 'varchar' })
-  image: string;
+  email: string;
 
   @Column({ type: 'varchar', length: 9 })
   phone: string;
+
+  @Column({ type: 'varchar'})
+  address: string;
 
   @Column(() => DateAt, { prefix: false })
   register: DateAt;
