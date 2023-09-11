@@ -6,6 +6,9 @@ import { HeaderComponent } from './header/header.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { PagesComponent } from '../pages/pages.component';
 import { RouterModule } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -15,11 +18,14 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     HeaderComponent,
     ToolbarComponent,
-    PagesComponent
+    PagesComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
   exports:[
     BreadcrumbsComponent,
