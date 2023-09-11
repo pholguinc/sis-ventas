@@ -30,6 +30,7 @@ import { CategoryFormComponent } from './almacen/categories/category-form.compon
 import { ProductFormComponent } from './almacen/products/product-form.component';
 import { ProvidersComponent } from './providers/providers.component';
 import { ProviderFormComponent } from './providers/provider-form.component';
+import { ProductsAddComponent } from './shopping/products-add/products-add.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ProviderFormComponent } from './providers/provider-form.component';
     ProductFormComponent,
     ProvidersComponent,
     ProviderFormComponent,
+    ProductsAddComponent,
 
   ],
   imports: [

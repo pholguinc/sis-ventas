@@ -14,6 +14,7 @@ import { ProductsComponent } from './almacen/products/products.component';
 import { ProductFormComponent } from './almacen/products/product-form.component';
 import { ProvidersComponent } from './providers/providers.component';
 import { ProviderFormComponent } from './providers/provider-form.component';
+import { ProductsAddComponent } from './shopping/products-add/products-add.component';
 
 //Componentes
 const routes: Routes = [
@@ -35,6 +36,10 @@ const routes: Routes = [
       { path: 'mantenimientos/cliente/:id', component: CustomerFormComponent },
       { path: 'mantenimientos/proveedores', component: ProvidersComponent },
       { path: 'mantenimientos/proveedor/:id', component: ProviderFormComponent },
+
+      //Compras
+
+      { path: 'compras/entradas/nuevo', component: ProductsAddComponent },
 
     ],
   },
