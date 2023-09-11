@@ -71,8 +71,26 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 }
 
 .mdc-data-table__cell {
-  padding: 0 16px 20px 16px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
 }
+
+.mdc-data-table__header-cell {
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  outline: none;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-mdc-table {
+  table-layout: auto;
+  white-space: nowrap!important;
+}
+
 
 
 /*.mat-column-code {
