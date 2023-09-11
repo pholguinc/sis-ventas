@@ -37,7 +37,7 @@ export class BrandsComponent implements OnInit, AfterViewInit {
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource();
@@ -49,14 +49,13 @@ export class BrandsComponent implements OnInit, AfterViewInit {
     this.brandsService.loadBrands().subscribe({
       next: (res) => {
         this.dataSource.data = res;
+
         console.log(res);
       },
       error: (error) => {
         console.error(error);
       },
-      complete: () => {
-        this.isLoading = false;
-      },
+
     });
   }
   applyFilter(event: Event) {
