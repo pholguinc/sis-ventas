@@ -52,7 +52,8 @@ export class SidebarService {
     iconMenu: '<span class="menu-arrow"></span>',
     submenu: [
       {title: 'Marcas', url: 'mantenimientos/marcas'},
-      {title: 'Clientes', url: 'mantenimientos/clientes'}
+      {title: 'Clientes', url: 'mantenimientos/clientes'},
+      {title: 'Proveedores', url: 'mantenimientos/proveedores'}
     ]
     },
     {

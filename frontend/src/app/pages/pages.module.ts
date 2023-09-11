@@ -1,3 +1,4 @@
+
 import { MatTableModule } from '@angular/material/table';
 
 //Módulos
@@ -27,6 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerFormComponent } from './customers/customer-form.component';
 import { CategoryFormComponent } from './almacen/categories/category-form.component';
 import { ProductFormComponent } from './almacen/products/product-form.component';
+import { ProvidersComponent } from './providers/providers.component';
+import { ProviderFormComponent } from './providers/provider-form.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { ProductFormComponent } from './almacen/products/product-form.component'
     CategoriesComponent,
     CategoryFormComponent,
     ProductFormComponent,
+    ProvidersComponent,
+    ProviderFormComponent,
+
   ],
   imports: [
     CommonModule,
