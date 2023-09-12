@@ -7,6 +7,7 @@ import {
   Delete,
   Put,
   UseGuards,
+  Res,
 } from '@nestjs/common';
 import { BrandsService } from '../services/brands.service';
 import { CreateBrandDto, UpdateBrandDto } from '../dto/brand.dto';
@@ -47,5 +48,18 @@ export class BrandsController {
   @ApiOperation({ summary: 'Petición HTTP para eliminar marcas' })
   remove(@Param('id') id: string) {
     return this.brandsService.remove(id);
+  }
+
+  @Get('pdf/download')
+  async downloadPDF(@Res() res) {
+    const buffer = await this.brandsService.generatePDF();
+
+    res.set({
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': 'attachment; filename=example.pdf',
+      'Content-Length': buffer.length,
+    });
+
+    res.end(buffer);
   }
 }

@@ -43,9 +43,12 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
+    "pdfkit": "^0.13.0",
+    "pdfkit-table": "^0.1.99",
     "pg": "^8.11.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
+    "sharp": "^0.32.5",
     "typeorm": "^0.3.17",
     "uuid": "^9.0.0"
   },
