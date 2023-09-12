@@ -15,26 +15,56 @@
         <!--begin::Card body-->
         <div class="card-body pt-0">
 
-          <!--end::Input group-->
-
           <!--begin::Input group-->
           <div class="mb-10 fv-row">
             <!--begin::Label-->
             <label class="required form-label">Nombre de la {{ titleModule }}</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input type="text" class="form-control mb-2" placeholder="Escriba el nombre de la marca" formControlName="name" />
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && customerForm.get('name')?.errors
+                }"
+                placeholder="Escriba el nombre del cliente"
+                formControlName="name"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && customerForm.get('name')?.hasError('required')"
+              >
+                El nombre del cliente es requerido
+              </div>
+
+            </div>
             <!--end::Input-->
           </div>
-          <!--end::Input group-->
-
           <!--begin::Input group-->
           <div class="mb-10 fv-row">
             <!--begin::Label-->
             <label class="required form-label">Apellido Paterno del {{ titleModule }}</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input type="text" class="form-control mb-2" placeholder="Escriba el nombre de la marca" formControlName="lastname_pater" />
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && customerForm.get('lastname_pater')?.errors
+                }"
+                placeholder="Escriba el Apellido Paterno del cliente"
+                formControlName="lastname_pater"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && customerForm.get('lastname_pater')?.hasError('required')"
+              >
+                El apellido paterno del cliente es requerido
+              </div>
+
+            </div>
             <!--end::Input-->
           </div>
           <!--end::Input group-->
@@ -45,7 +75,24 @@
             <label class="required form-label">Apellido Materno del {{ titleModule }}</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input type="text" class="form-control mb-2" placeholder="Escriba el nombre de la marca" formControlName="lastname_mater" />
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && customerForm.get('lastname_mater')?.errors
+                }"
+                placeholder="Escriba el Apellido Materno del cliente"
+                formControlName="lastname_mater"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && customerForm.get('lastname_mater')?.hasError('required')"
+              >
+                El apellido materno del cliente es requerido
+              </div>
+
+            </div>
             <!--end::Input-->
           </div>
           <!--end::Input group-->
@@ -56,10 +103,27 @@
             <label class="required form-label">Documento del {{ titleModule }}</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input type="string" class="form-control mb-2" placeholder="Escriba el documento del cliente" formControlName="numDoc" />
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && customerForm.get('numDoc')?.errors
+                }"
+                placeholder="Escriba el docuemnto del cliente"
+                formControlName="numDoc"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && customerForm.get('numDoc')?.hasError('required')"
+              >
+                El documento del cliente es requerido
+              </div>
+
+            </div>
             <!--end::Input-->
             <!--begin::Description-->
-            <div class="text-muted fs-7">Se requiere y se recomienda que el documento del cliente sea único.</div>
+            <div class="text-muted fs-7" *ngIf="!submitted">Se requiere y se recomienda que el documento del cliente sea único.</div>
             <!--end::Description-->
           </div>
           <!--end::Input group-->
@@ -70,10 +134,34 @@
             <label class="required form-label">Correo del {{ titleModule }}</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input type="string" class="form-control mb-2" placeholder="Escriba el correo del cliente" formControlName="email" />
+            <div class="input-group has-validation">
+              <input
+                type="email"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && customerForm.get('email')?.errors
+                }"
+                placeholder="Escriba el correo del cliente"
+                formControlName="email"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && customerForm.get('email')?.hasError('required')"
+              >
+                El correo del cliente es requerido
+              </div>
+
+              <div
+              class="invalid-feedback"
+              *ngIf="submitted && customerForm.get('email')?.hasError('email')"
+            >
+              Ingrese un correo válido
+            </div>
+
+            </div>
             <!--end::Input-->
             <!--begin::Description-->
-            <div class="text-muted fs-7">Se requiere y se recomienda que el correo del cliente sea único.</div>
+            <div class="text-muted fs-7" *ngIf="!submitted">Se requiere y se recomienda que el correo del cliente sea único.</div>
             <!--end::Description-->
           </div>
           <!--end::Input group-->
@@ -84,10 +172,34 @@
             <label class="required form-label">Celular del {{ titleModule }}</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input type="string" class="form-control mb-2" placeholder="Escriba el celular del cliente" formControlName="phone" />
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && customerForm.get('phone')?.errors
+                }"
+                placeholder="Escriba el celular del cliente"
+                formControlName="phone"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && customerForm.get('phone')?.hasError('required')"
+              >
+                El celular del cliente es requerido
+              </div>
+
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && customerForm.get('phone')?.hasError('pattern')"
+              >
+                Ingrese un número de celular válido
+              </div>
+
+            </div>
             <!--end::Input-->
             <!--begin::Description-->
-            <div class="text-muted fs-7">Se requiere y se recomienda que el celular del cliente sea único.</div>
+            <div class="text-muted fs-7" *ngIf="!submitted">Se requiere y se recomienda que el celular del cliente sea único.</div>
             <!--end::Description-->
           </div>
           <!--end::Input group-->
@@ -98,7 +210,23 @@
             <label class="required form-label">Dirección del {{ titleModule }}</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input type="string" class="form-control mb-2" placeholder="Escriba la dirección del cliente" formControlName="address" />
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && customerForm.get('address')?.errors
+                }"
+                placeholder="Escriba la dirección del cliente"
+                formControlName="address"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && customerForm.get('address')?.hasError('required')">
+                La dirección del cliente es requerido
+              </div>
+
+            </div>
             <!--end::Input-->
           </div>
           <!--end::Input group-->

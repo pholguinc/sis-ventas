@@ -20,7 +20,6 @@ export class BrandFormComponent implements OnInit {
   public titleModule: string = 'Marca';
   public titleData: string = 'marca';
   public isLoading = false;
-
   public submitted = false;
 
   constructor(
@@ -44,10 +43,9 @@ export class BrandFormComponent implements OnInit {
 
   onSubmit() {
     const id = this.activatedRoute.snapshot.params['id'];
-
+    this.submitted = true;
     if (id === 'nuevo') {
       this.isLoading = true;
-      this.title = 'Crear Nuevo Cliente';
       this.brandsService.addBrand(this.brandForm.value).subscribe({
         next: (res) => {
           Swal.fire({
@@ -71,7 +69,6 @@ export class BrandFormComponent implements OnInit {
         },
       });
     } else {
-      this.title = 'Editar Cliente';
       this.brandsService.updateCustomer(id, this.brandForm.value).subscribe({
         next: (res) => {
           Swal.fire({

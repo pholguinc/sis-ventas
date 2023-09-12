@@ -17,6 +17,7 @@ export class CustomerFormComponent implements OnInit{
   public titleModule: string = 'Cliente';
   public titleData: string = 'cliente';
   public isLoading = false;
+  public submitted = false;
 
   constructor(
     private customersService: CustomersService,
@@ -33,9 +34,10 @@ export class CustomerFormComponent implements OnInit{
       lastname_pater: ['', Validators.required],
       lastname_mater: ['', Validators.required],
       numDoc: ['', Validators.required],
-      email: ['', Validators.required],
-      phone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required,Validators.pattern('^[0-9]{9}$')]],
       address: ['', Validators.required],
+
     });
     const id = this.activatedRoute.snapshot.params['id'];
     this.title = id === 'nuevo' ? 'Crear Nuevo Cliente' : 'Editar Cliente';
@@ -44,7 +46,7 @@ export class CustomerFormComponent implements OnInit{
 
   onSubmit(){
     const id = this.activatedRoute.snapshot.params['id'];
-
+    this.submitted = true;
     if(id === 'nuevo'){
       this.isLoading = true;
       this.title = 'Crear Nuevo Cliente';

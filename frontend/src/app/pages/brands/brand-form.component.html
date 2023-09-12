@@ -21,11 +21,28 @@
             <!--end::Label-->
             <!--begin::Input-->
 
-            <input type="text" class="form-control mb-2" placeholder="Escriba el código de la marca" formControlName="code" />
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && brandForm.get('code')?.errors
+                }"
+                placeholder="Escriba el código de la marca"
+                formControlName="code"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && brandForm.get('code')?.hasError('required')"
+              >
+                El código de la marca es requerida
+              </div>
+
+            </div>
 
             <!--end::Input-->
             <!--begin::Description-->
-            <div class="text-muted fs-7">Se requiere y se recomienda que el código de categoría sea único.</div>
+            <div class="text-muted fs-7" *ngIf="!submitted">Se requiere y se recomienda que el código de categoría sea único.</div>
             <!--end::Description-->
           </div>
           <!--end::Input group-->
@@ -37,10 +54,27 @@
             <label class="required form-label">Nombre de la {{ titleModule }}</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input type="text" class="form-control mb-2" placeholder="Escriba el nombre de la marca" formControlName="name" />
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && brandForm.get('name')?.errors
+                }"
+                placeholder="Escriba el nombre de la marca"
+                formControlName="code"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && brandForm.get('name')?.hasError('required')"
+              >
+                El nombre de la marca es requerida
+              </div>
+
+            </div>
             <!--end::Input-->
             <!--begin::Description-->
-            <div class="text-muted fs-7">Se requiere y se recomienda que el nombre de categoría sea único.</div>
+            <div class="text-muted fs-7" *ngIf="!submitted">Se requiere y se recomienda que el nombre de categoría sea único.</div>
             <!--end::Description-->
           </div>
           <!--end::Input group-->
