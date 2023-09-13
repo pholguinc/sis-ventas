@@ -26,7 +26,8 @@
                 type="text"
                 class="form-control mb-2"
                 [ngClass]="{
-                  'is-invalid': submitted && brandForm.get('code')?.errors
+                  'is-invalid': submitted && brandForm.get('code')?.errors,
+                  'is-valid': brandForm.get('code')?.touched && brandForm.get('code')?.valid
                 }"
                 placeholder="Escriba el código de la marca"
                 formControlName="code"
@@ -59,10 +60,11 @@
                 type="text"
                 class="form-control mb-2"
                 [ngClass]="{
-                  'is-invalid': submitted && brandForm.get('name')?.errors
+                  'is-invalid': submitted && brandForm.get('name')?.errors,
+                  'is-valid': brandForm.get('name')?.touched && brandForm.get('name')?.valid
                 }"
                 placeholder="Escriba el nombre de la marca"
-                formControlName="code"
+                formControlName="name"
               />
               <div
                 class="invalid-feedback"
