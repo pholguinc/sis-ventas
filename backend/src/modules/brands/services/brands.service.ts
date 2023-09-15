@@ -9,6 +9,8 @@ import PDFDocument from 'pdfkit';
 import { PdfkitConstruct } from 'pdfkit-construct';
 import * as fs from 'fs';
 import { join } from 'path';
+import * as pdfmake from 'pdfmake/build/pdfmake';
+import * as vfsFonts from 'pdfmake/build/vfs_fonts';
 
 @Injectable()
 export class BrandsService {
@@ -119,4 +121,5 @@ export class BrandsService {
 
     return marca;
   }
+
 }

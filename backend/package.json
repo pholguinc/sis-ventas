@@ -47,6 +47,7 @@
     "pdfkit": "^0.13.0",
     "pdfkit-construct": "^1.2.3",
     "pdfkit-table": "^0.1.99",
+    "pdfmake": "^0.2.7",
     "pg": "^8.11.1",
     "puppeteer": "^21.2.1",
     "reflect-metadata": "^0.1.13",
