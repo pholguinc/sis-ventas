@@ -50,16 +50,4 @@ export class BrandsController {
     return this.brandsService.remove(id);
   }
 
-  @Get('pdf/download')
-  async downloadPDF(@Res() res) {
-    const buffer = await this.brandsService.generatePDF();
-
-    res.set({
-      'Content-Type': 'application/pdf',
-      'Content-Disposition': 'attachment; filename=example.pdf',
-      'Content-Length': buffer.length,
-    });
-
-    res.end(buffer);
-  }
 }
