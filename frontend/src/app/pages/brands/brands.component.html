@@ -82,11 +82,17 @@
               Acciones
             </mat-header-cell>
             <mat-cell *matCellDef="let brand" data-label="Acciones" class="mt-4">
-              <a [routerLink]="['/admin/mantenimientos/marca', brand.id]" class="btn btn-primary margin-btn">
+              <a [routerLink]="['/admin/mantenimientos/marca', brand.id]" class="btn btn-sm btn-primary margin-btn">
                 <i class="bi bi-pencil-fill fs-4"></i>
               </a>
-              <a class="btn btn-danger" (click)="deleteBrand(brand)">
+              <a class="btn btn-danger btn-sm margin-btn" (click)="deleteBrand(brand)">
                 <i class="bi bi-trash-fill fs-4"></i>
+              </a>
+              <a class="btn btn-success btn-sm margin-btn" (click)="deleteBrand(brand)">
+                <i class="bi bi-file-excel fs-4"></i>
+              </a>
+              <a class="btn btn-danger btn-sm" (click)="generatePDF()">
+                <i class="bi bi-file-pdf fs-4"></i>
               </a>
             </mat-cell>
           </ng-container>

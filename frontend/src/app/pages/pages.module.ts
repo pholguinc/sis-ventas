@@ -31,6 +31,7 @@ import { ProductFormComponent } from './almacen/products/product-form.component'
 import { ProvidersComponent } from './providers/providers.component';
 import { ProviderFormComponent } from './providers/provider-form.component';
 import { ProductsAddComponent } from './shopping/products-add/products-add.component';
+import { PdfComponent } from './brands/pdf/pdf.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ProductsAddComponent } from './shopping/products-add/products-add.compo
     ProvidersComponent,
     ProviderFormComponent,
     ProductsAddComponent,
+    PdfComponent,
 
   ],
   imports: [
