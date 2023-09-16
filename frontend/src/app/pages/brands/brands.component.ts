@@ -6,9 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 const base_url = environment.base_url;
-import { format } from 'date-fns';
-
-
+import * as moment from 'moment';
 
 //Servicios
 
@@ -21,6 +19,11 @@ import { environment } from 'src/environments/environment.prod';
 import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import * as XLSX from 'xlsx';
+
+const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml;charset=UTF-8';
+const EXCEL_EXT = '.xlsx';
+
 @Component({
   selector: 'app-brandss',
   templateUrl: './brands.component.html',
@@ -28,13 +31,16 @@ import 'jspdf-autotable';
 })
 export class BrandsComponent implements OnInit, AfterViewInit {
   brand: Brand[] = [];
+  currentYear: number = new Date().getFullYear();
 
   dataSource!: MatTableDataSource<Brand>;
   displayedColumns: string[] = ['code', 'name', 'acciones'];
   isLoading: boolean = false;
   resultsLength = 0;
 
-  constructor(private brandsService: BrandsService) {}
+  constructor(
+    private brandsService: BrandsService,) {}
+
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -100,55 +106,85 @@ export class BrandsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  header = [['ID', 'Name', 'Email', 'Profile']];
 
-  tableData = [
-    [1, 'Nombre', 'Nombre', 'Nombre'],
-    [2, 'Nombre', 'Nombre', 'Nombre'],
-  ];
+  //Reportes PDF
+
+  header = [['#', 'Código', 'Marca', 'Fecha']];
 
   generatePDF(): void {
-    var pdf = new jsPDF();
-    var iconUrl = '../../../assets/media/config/logo-dark.png'; // Replace with the path to your image icon
-    var iconWidth = 40; // Set the width of the icon
-    var iconHeight = 10; // Set the height of the icon// Center the icon horizontally
+    const currentDate = new Date();
+    const formattedDate = this.formatDate(currentDate);
+    const pdf = new jsPDF();
+    const iconUrl = '../../../assets/media/config/logo-dark.png';
+    const iconWidth = 40;
+    const iconHeight = 10;
 
-    pdf.addImage(
-      iconUrl,
-      10,
-      10,
-      iconWidth,
-      iconHeight
-    );
+    pdf.addImage(iconUrl, 10, 10, iconWidth, iconHeight);
 
-    var pageWidth = pdf.internal.pageSize.getWidth();
-    var text = 'Reporte general de Marcas';
-    var fontSize = 20;
-    const fontStyle = "bold";
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const text = 'Reporte general de Marcas';
+    const  fontSize = 20;
+    const fontStyle = 'bold';
 
-    var textWidth =
+    const textWidth =
       (pdf.getStringUnitWidth(text) * fontSize) / pdf.internal.scaleFactor;
 
-    var centerX = (pageWidth - textWidth) / 2;
+    const centerX = (pageWidth - textWidth) / 2;
 
     pdf.setFontSize(fontSize);
-    pdf.setFont('Poppins', fontStyle)
+    pdf.setFont('Poppins', fontStyle);
     pdf.text(text, centerX, 18);
 
     const modifiedData = this.dataSource.data.map((brand, index) => ({
       ...brand,
-      id: index + 1, // Increment the ID
+      id: index + 1,
     }));
 
     (pdf as any).autoTable({
       head: this.header,
-      body: modifiedData.map(brand => [brand.id, brand.code, brand.name, brand.register.createdAt]), // Use brand.register.createdAt
+      body: modifiedData.map((brand) => [
+        brand.id,
+        brand.code,
+        brand.name,
+        moment(brand.register.createdAt).format('DD-MM-YYYY'),
+      ]),
       margin: { top: 30 },
       didDrawCell: (data: { column: { index: any } }) => {
         console.log(data.column.index);
       },
     });
+    pdf.setFontSize(16);
+    pdf.setFont('Poppins', fontStyle);
+    pdf.text(
+      `Mi empresa - ${this.currentYear}`,
+      pageWidth / 2,
+      pdf.internal.pageSize.getHeight() - 10,
+      { align: 'center' }
+    );
+
     pdf.output('dataurlnewwindow');
-    pdf.save('table.pdf');
+    pdf.save(`Reporte-marcas-${formattedDate}.pdf`);
   }
+
+  formatDate(date: Date): string {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+
+  generateExcel() {
+    const createdAt = moment().format('DD-MM-YYYY');
+    const dataForExport = this.dataSource.data.map((brand) => {
+      const { id, register, ...brandWithoutIdAndRegister } = brand; // Exclude the 'id' and 'register' fields
+      const fecha = moment(brand.register.createdAt).format('DD-MM-YYYY');
+      return { ...brandWithoutIdAndRegister, 'Fecha': fecha };
+    });
+
+    const workSheet = XLSX.utils.json_to_sheet(dataForExport);
+    const workBook: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workBook, workSheet, 'SheetName');
+    XLSX.writeFile(workBook, `Reporte-marcas-${createdAt}.xlsx`);
+  }
+
 }
