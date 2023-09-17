@@ -18,6 +18,7 @@ import { Provider } from 'src/app/models/provider.model';
 })
 export class DashboardComponent implements OnInit {
 
+
   brand: Brand[] = [];
   customer: Customer[] = [];
   user: User[] = [];

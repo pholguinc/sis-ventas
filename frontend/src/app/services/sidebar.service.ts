@@ -141,7 +141,7 @@ export class SidebarService {
         <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor" />
       </svg>
     </span>`,
-    url:"/"
+    url:"/admin/acerca-de"
     }
   ];
   constructor() { }

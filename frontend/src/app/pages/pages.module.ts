@@ -10,6 +10,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; /
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { NgChartsModule } from 'ng2-charts';
+
+
 //Componentes
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrandsComponent } from './brands/brands.component';
@@ -31,7 +34,7 @@ import { ProductFormComponent } from './almacen/products/product-form.component'
 import { ProvidersComponent } from './providers/providers.component';
 import { ProviderFormComponent } from './providers/provider-form.component';
 import { ProductsAddComponent } from './shopping/products-add/products-add.component';
-import { PdfComponent } from './brands/pdf/pdf.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,7 @@ import { PdfComponent } from './brands/pdf/pdf.component';
     ProvidersComponent,
     ProviderFormComponent,
     ProductsAddComponent,
-    PdfComponent,
+    AboutComponent,
 
   ],
   imports: [
@@ -69,6 +72,7 @@ import { PdfComponent } from './brands/pdf/pdf.component';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    NgChartsModule
   ],
   exports: [DashboardComponent, BrandsComponent, CustomersComponent],
 })

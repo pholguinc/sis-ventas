@@ -15,6 +15,7 @@ import { ProductFormComponent } from './almacen/products/product-form.component'
 import { ProvidersComponent } from './providers/providers.component';
 import { ProviderFormComponent } from './providers/provider-form.component';
 import { ProductsAddComponent } from './shopping/products-add/products-add.component';
+import { AboutComponent } from './about/about.component';
 
 //Componentes
 const routes: Routes = [
@@ -41,6 +42,9 @@ const routes: Routes = [
 
       { path: 'compras/entradas/nuevo', component: ProductsAddComponent },
 
+      //Acerca de
+
+      { path: 'acerca-de', component: AboutComponent },
     ],
   },
 ];
