@@ -37,3 +37,15 @@ body {
 .mat-typography h2 {
   margin: 0!important;
 }
+
+.card-shadow{
+  border: 1px solid #ccc!important;
+  border-radius:10px;
+  transition: box-shadow .3s;
+}
+
+.card-shadow:hover{
+  border-radius:10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+}

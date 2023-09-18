@@ -4,9 +4,10 @@ import { CreateProductDto, UpdateProductDto } from '../dto/product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from '../entities/product.entity';
 import { Brand } from 'src/modules/brands/entities/brand.entity';
-import { Repository, DeleteResult } from 'typeorm'; // Import FindOptions
+import { Repository, DeleteResult, In } from 'typeorm'; // Import FindOptions
 import { CategoriesService } from 'src/modules/categories/services/categories.service';
 import { ErrorManager } from 'src/utils/error.manager';
+import { Provider } from '../../providers/entities/provider.entity';
 
 @Injectable()
 export class ProductsService {
@@ -14,38 +15,86 @@ export class ProductsService {
     @InjectRepository(Product) private productRepo: Repository<Product>,
     @InjectRepository(Brand) private brandRepo: Repository<Brand>,
     @InjectRepository(Category) private categoryRepo: Repository<Category>,
+    @InjectRepository(Provider) private providerRepo: Repository<Provider>,
     private categoriesService: CategoriesService,
   ) {}
 
-  private products = [];
-
   async create(data: CreateProductDto) {
     try {
-      const newProduct = new Product();
-      newProduct.name = data.name;
-      newProduct.description = data.description;
-      newProduct.price = data.price;
-      newProduct.sale = data.sale;
-      newProduct.stock = data.stock;
+      const countOfExistingProducts = await this.productRepo.count();
 
-      const brand = await this.brandRepo.findOne({
-        where: { id: data.brandId },
-      });
-      const category = await this.categoryRepo.findOne({
-        where: { id: data.categoryId },
-      });
+      let dynamicCode;
 
-      if (!brand || !category) {
-        throw new Error('Brand or category not found.');
+      if (data.code) {
+        dynamicCode = `PROD-${String(data.code).padStart(8, '0')}`;
+      } else {
+        dynamicCode = this.generateDynamicCode(countOfExistingProducts + 1);
       }
 
-      newProduct.brand = brand;
-      newProduct.category = category;
+      //const newProduct = new Product();
+      //newProduct.code = dynamicCode;
+      //newProduct.name = data.name;
+      //newProduct.description = data.description;
+      //newProduct.price = data.price;
+      //newProduct.sale = data.sale;
+      //newProduct.stock = data.stock;
+
+      const newProduct = this.productRepo.create(data);
+      if (data.brandId) {
+        const brand = await this.brandRepo.findOne({
+          where: { id: data.brandId },
+        });
+        newProduct.brand = brand;
+      }
+      if (data.categoryId) {
+        const category = await this.brandRepo.findOne({
+          where: { id: data.categoryId },
+        });
+        newProduct.category = category;
+      }
+
+      if (data.providersIds) {
+        const providers = await this.providerRepo.find({
+          where: {
+            id: In(data.providersIds),
+          },
+        });
+        newProduct.providers = providers;
+      }
 
       return this.productRepo.save(newProduct);
     } catch (error) {
       throw ErrorManager.createSignatureError(error.message);
     }
+  }
+
+  /*async create(data: CreateProductDto) {
+    try {
+      const countOfExistingProducts = await this.productRepo.count();
+
+      let dynamicCode;
+
+      if (data.code) {
+        dynamicCode = `PROD-${String(data.code).padStart(8, '0')}`;
+      } else {
+        dynamicCode = this.generateDynamicCode(countOfExistingProducts + 1);
+      }
+
+      const newProduct = this.brandRepo.create({
+        ...data,
+        code: dynamicCode,
+      });
+
+      return await this.brandRepo.save(newProduct);
+    } catch (error) {
+      throw ErrorManager.createSignatureError(error.message);
+    }
+  }*/
+
+  generateDynamicCode(count: number) {
+    const prefix = 'MARCA';
+    const formattedCount = String(count).padStart(5, '0');
+    return `${prefix}-${formattedCount}`;
   }
 
   async findAll(): Promise<Product[]> {

@@ -6,17 +6,23 @@ import {
   Entity,
   Index,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { SalesDetails } from '../../sales-details/entities/sales-detail.entity';
+import { Provider } from '../../providers/entities/provider.entity';
 
 @Entity({ name: 'products' })
 @Index(['price', 'stock'])
 export class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @Column({ type: 'varchar', length: 255, unique: true })
+  code: string;
 
   @Column({ type: 'varchar', length: 255, unique: true })
   name: string;
@@ -48,4 +54,16 @@ export class Product {
 
   @OneToMany(() => SalesDetails, (salesDetails) => salesDetails.product)
   salesDetails: SalesDetails[];
+
+  @ManyToMany(() => Provider, (provider) => provider.products)
+  @JoinTable({
+    name: 'products_provider',
+    joinColumn: {
+      name: 'product_id',
+    },
+    inverseJoinColumn: {
+      name: 'provider_id',
+    },
+  })
+  providers: Provider[];
 }

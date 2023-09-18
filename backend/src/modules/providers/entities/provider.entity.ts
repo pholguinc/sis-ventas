@@ -1,5 +1,13 @@
+import { Product } from '../../products/entities/product.entity';
 import { DateAt } from '../../../database/date-at.entity';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'providers' })
 export class Provider {
@@ -18,8 +26,11 @@ export class Provider {
   @Column({ type: 'varchar', length: 9 })
   phone: string;
 
-  @Column({ type: 'varchar'})
+  @Column({ type: 'varchar' })
   address: string;
+
+  @ManyToMany(() => Product, (product) => product.providers)
+  products: Product[];
 
   @Column(() => DateAt, { prefix: false })
   register: DateAt;
