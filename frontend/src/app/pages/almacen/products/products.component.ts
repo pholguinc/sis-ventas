@@ -21,10 +21,9 @@ export interface PeriodicElement {
 
 export class ProductsComponent {
   dataSource!: MatTableDataSource<Product>;
-  displayedColumns: string[] = ['name','stock','price','price_sale','acciones'];
+  displayedColumns: string[] = ['code','name','stock','price','price_sale','acciones'];
   isLoading: boolean = false;
   resultsLength = 0;
-
 
 
   constructor(private productsService: ProductsService) {}
@@ -65,9 +64,6 @@ export class ProductsComponent {
   }
 
   deleteProduct(product: Product){}
-
-
-
 
 
 }

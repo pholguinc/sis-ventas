@@ -59,6 +59,14 @@
     <div class="example-container" style="overflow-y: auto; justify-content: center;">
       <div class="table-responsive">
         <mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="code">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Código
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Código" class="mt-4">
+              {{ row.code }}
+            </mat-cell>
+          </ng-container>
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header>
               Nombre
@@ -79,7 +87,7 @@
 
           <ng-container matColumnDef="price">
             <mat-header-cell *matHeaderCellDef mat-sort-header>
-              Precio Compra
+              Precio Venta
             </mat-header-cell>
             <mat-cell *matCellDef="let row" class="mt-4">
               {{ row.price }}
@@ -109,7 +117,7 @@
               Acciones
             </mat-header-cell>
             <mat-cell *matCellDef="let product" data-label="Acciones" class="mt-4">
-              <a [routerLink]="['/admin/almacen/categoria', product.id]" class="btn btn-primary margin-btn">
+              <a [routerLink]="['/admin/almacen/producto', product.id]" class="btn btn-primary margin-btn">
                 <i class="bi bi-pencil-fill fs-4"></i>
               </a>
               <a class="btn btn-danger" (click)="deleteProduct(product)">

@@ -1,1 +1,296 @@
-<p>product-form works!</p>
+<!--begin::Container-->
+<div class="container-xxl">
+  <form
+    class="form d-flex flex-column flex-lg-row"
+    [formGroup]="productForm"
+    (submit)="onSubmit()"
+  >
+    <!--begin::Main column-->
+    <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+      <!--begin::General options-->
+      <div class="card card-flush py-4">
+        <!--begin::Card header-->
+        <div class="card-header">
+          <div class="card-title">
+            <h2>{{ title }}</h2>
+          </div>
+        </div>
+        <!--end::Card header-->
+        <!--begin::Card body-->
+        <div class="card-body pt-0">
+          <!--begin::Input Código Producto-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label"
+              >Código del {{ titleModule }}</label
+            >
+            <!--end::Label-->
+            <!--begin::Input-->
+
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && productForm.get('code')?.errors,
+                  'is-valid':
+                    productForm.get('code')?.touched &&
+                    productForm.get('code')?.valid
+                }"
+                placeholder="Escriba el código del producto"
+                formControlName="code"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  submitted && productForm.get('code')?.hasError('required')
+                "
+              >
+                El código del producto es requerido.
+              </div>
+            </div>
+
+            <!--end::Input-->
+            <!--begin::Description-->
+            <div class="text-muted fs-7" *ngIf="!submitted">
+              Se requiere y se recomienda que el código de categoría sea único.
+            </div>
+            <!--end::Description-->
+          </div>
+          <!--end::Input Código Producto-->
+
+          <!--begin::Input Nombre-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label"
+              >Nombre del {{ titleModule }}</label
+            >
+            <!--end::Label-->
+            <!--begin::Input-->
+            <div class="input-group has-validation">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && productForm.get('name')?.errors,
+                  'is-valid':
+                    productForm.get('name')?.touched &&
+                    productForm.get('name')?.valid
+                }"
+                placeholder="Escriba el nombre de la marca"
+                formControlName="name"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  submitted && productForm.get('name')?.hasError('required')
+                "
+              >
+                El nombre del producto es requerido.
+              </div>
+            </div>
+            <!--end::Input-->
+            <!--begin::Description-->
+            <div class="text-muted fs-7" *ngIf="!submitted">
+              Se requiere y se recomienda que el nombre del producto sea único.
+            </div>
+            <!--end::Description-->
+          </div>
+          <!--end::Input Nombre-->
+
+          <!--begin::Input stock-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label"
+              >Stock del {{ titleModule }}</label
+            >
+            <!--end::Label-->
+            <!--begin::Input-->
+            <div class="input-group has-validation">
+              <input
+                type="number"
+                min="0"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && productForm.get('stock')?.errors,
+                  'is-valid':
+                    productForm.get('stock')?.touched &&
+                    productForm.get('stock')?.valid
+                }"
+                placeholder="Escriba el stock del producto"
+                formControlName="stock"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  submitted && productForm.get('stock')?.hasError('required')
+                "
+              >
+                El stock del producto es requerido.
+              </div>
+            </div>
+            <!--end::Input-->
+            <!--begin::Description-->
+            <div class="text-muted fs-7" *ngIf="!submitted">
+              Se requiere y se recomienda que el nombre de categoría sea único.
+            </div>
+            <!--end::Description-->
+          </div>
+          <!--end::Input stock->
+
+          <!--begin::Input precio compra-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label"
+              >Precio de compra del {{ titleModule }}</label
+            >
+            <!--end::Label-->
+            <!--begin::Input-->
+            <div class="input-group has-validation">
+              <input
+                type="number"
+                min="0"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && productForm.get('price')?.errors,
+                  'is-valid':
+                    productForm.get('price')?.touched &&
+                    productForm.get('price')?.valid
+                }"
+                placeholder="Escriba el precio de compra del producto"
+                formControlName="price"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  submitted && productForm.get('price')?.hasError('required')
+                "
+              >
+                El precio de compra es requerido
+              </div>
+            </div>
+            <!--end::Input-->
+            <!--begin::Description-->
+            <div class="text-muted fs-7" *ngIf="!submitted">
+              Se requiere y se recomienda que el nombre de categoría sea único.
+            </div>
+            <!--end::Description-->
+          </div>
+          <!--end::Input precio compra-->
+
+          <!--begin::Input precio venta-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label"
+              >Precio de venta del {{ titleModule }}</label
+            >
+            <!--end::Label-->
+            <!--begin::Input-->
+            <div class="input-group has-validation">
+              <input
+                type="number"
+                min="0"
+                class="form-control mb-2"
+                [ngClass]="{
+                  'is-invalid': submitted && productForm.get('sale')?.errors,
+                  'is-valid':
+                    productForm.get('sale')?.touched &&
+                    productForm.get('sale')?.valid
+                }"
+                placeholder="Escriba el precio de venta del producto"
+                formControlName="sale"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  submitted && productForm.get('sale')?.hasError('required')
+                "
+              >
+                El Precio de venta del producto es requerido
+              </div>
+            </div>
+            <!--end::Input-->
+            <!--begin::Description-->
+            <div class="text-muted fs-7" *ngIf="!submitted">
+              Se requiere y se recomienda que el nombre de categoría sea único.
+            </div>
+            <!--end::Description-->
+          </div>
+          <!--end::Input precio venta-->
+
+          <!--begin::Select Categoría-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label"
+              >Categoría del {{ titleModule }}</label
+            >
+            <!--end::Label-->
+            <!--begin::Input-->
+            <div class="input-group">
+              <select
+                class="form-select mb-2"
+                data-control="select2"
+                data-hide-search="true"
+                name="category"
+              >
+                <option selected="selecciona una opción">Selcciona una opción</option>
+                <option *ngFor="let item of category">{{ item.name }}</option>
+
+              </select>
+
+            </div>
+            <!--end::Input-->
+          </div>
+          <!--end::Select Categoría-->
+
+          <!--begin::Select Marcas-->
+          <div class="mb-10 fv-row">
+            <!--begin::Label-->
+            <label class="required form-label"
+              >Marca del {{ titleModule }}</label
+            >
+            <!--end::Label-->
+            <!--begin::Input-->
+            <div class="input-group">
+              <select
+                class="form-select mb-2"
+                data-control="select2"
+                data-hide-search="true"
+                name="brand"
+              >
+                <option selected="selecciona una opción">Selecciona una opción</option>
+                <option *ngFor="let brands of brand">{{ brands.name }}</option>
+
+              </select>
+
+            </div>
+            <!--end::Input-->
+          </div>
+          <!--end::Select Marcas-->
+        </div>
+        <!--end::Card header-->
+      </div>
+      <!--end::General options-->
+
+      <div class="d-flex justify-content-end">
+        <!--begin::Button-->
+        <a
+          routerLink="/admin/almacen/productos"
+          class="btn btn-bg-secondary me-5"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="indicator-label">Regresar</span>
+        </a>
+        <!--end::Button-->
+        <!--begin::Button-->
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-save"></i>
+          <span class="indicator-label">{{ isUpdate }}</span>
+        </button>
+        <!--end::Button-->
+      </div>
+    </div>
+    <!--end::Main column-->
+  </form>
+</div>
+<!--end::Container-->
