@@ -1,0 +1,336 @@
+<!--begin::Container-->
+<div class="container-xxl">
+  <div class="row">
+    <div class="col-md-8">
+      <form class="form d-flex">
+        <!--begin::Main column-->
+        <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+          <!--begin::General options-->
+          <div class="card card-flush">
+            <!--begin::Card header-->
+            <div class="card-header bg-dark">
+              <div class="card-title">
+                <h2 class="text-white">Datos de la Compra</h2>
+              </div>
+            </div>
+            <!--end::Card header-->
+            <!--begin::Card body-->
+            <div class="card-body p-0">
+              <div class="row pt-8 px-7">
+                <div class="col-md-12">
+                  <div class="mb-10 fv-row">
+                    <!--begin::Input group-->
+                  <div class="input-group mb-5">
+                    <button class="input-group-text btn btn-dark" data-bs-toggle="modal" data-bs-target="#mdlProducts">
+                      <i class="fa fa-user-plus"></i>
+                      <span> Agregar Productos</span>
+                    </button>
+                  </div>
+                  <!--end::Input group-->
+
+                    <!--end::Input-->
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-4 fv-row">
+                    <!--begin::Label-->
+                    <label class="required form-label">Cantidad</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <div class="input-group has-validation">
+                      <input
+                        type="number"
+                        min="0"
+                        class="form-control mb-2"
+                        placeholder="0.00"
+                      />
+                    </div>
+
+                    <!--end::Input-->
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-4 fv-row">
+                    <!--begin::Label-->
+                    <label class="required form-label"
+                      >Precio de Unitario</label
+                    >
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <div class="input-group has-validation">
+                      <input
+                        type="number"
+                        min="0"
+                        class="form-control mb-2"
+                        placeholder="0.00"
+                      />
+                    </div>
+
+                    <!--end::Input-->
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-4 fv-row">
+                    <!--begin::Label-->
+                    <label class="required form-label">Precio Total</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <div class="input-group has-validation">
+                      <input
+                        type="number"
+                        min="0"
+                        class="form-control mb-2"
+                        placeholder="0.00"
+                      />
+                    </div>
+
+                    <!--end::Input-->
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="table-responsive">
+                  <table class="table striped table-bordered mt-4">
+                    <thead class="bg-dark text-white">
+                      <tr>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Precio Unitario</th>
+                        <th class="text-center">Precio Total</th>
+                        <th class="text-center">Cantidad</th>
+                        <th class="text-center">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center pad-t font-bold">1</td>
+                        <td class="text-center pad-t">Inca Kola de 3L</td>
+                        <td class="text-center pad-t">20.0</td>
+                        <td class="text-center pad-t">5</td>
+                        <td class="text-center">
+                          <a class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash fs-4"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--end::Card header-->
+          </div>
+          <!--end::General options-->
+        </div>
+        <!--end::Main column-->
+      </form>
+    </div>
+    <div class="col-md-4">
+      <!--begin::Main column-->
+      <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+        <!--begin::General options-->
+        <div class="card card-flush">
+          <!--begin::Card header-->
+          <div class="card-header bg-dark">
+            <div class="card-title">
+              <h2 class="text-white">Datos de la Compra</h2>
+            </div>
+          </div>
+          <!--end::Card header-->
+          <!--begin::Card body-->
+          <div class="card-body p-0">
+
+            <div class="row pt-8 px-7">
+              <div class="col-md-12">
+                <div class="mb-4 fv-row">
+                  <!--begin::Label-->
+                  <label class="required form-label">Fecha</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <div class="input-group has-validation">
+                    <input
+                      type="date"
+                      class="form-control mb-2"
+                      placeholder="0.00"
+                    />
+                  </div>
+
+                  <!--end::Input-->
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="mb-4 fv-row">
+                  <!--begin::Label-->
+                  <label class="required form-label">Seleccionar Proveedor</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <select
+                    class="form-select mb-2"
+                    data-control="select2"
+                    data-hide-search="true"
+                    name="category"
+                  >
+                    <option selected="selecciona una opción" value="">
+                      Selecciona una opción
+                    </option>
+                    <option>Boleta</option>
+                    <option>Factura</option>
+                    <option>Guía de Remisión</option>
+                  </select>
+
+                  <!--end::Input-->
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="mb-4 fv-row">
+                  <!--begin::Label-->
+                  <label class="required form-label">Tipo de Comprobante</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <select
+                    class="form-select mb-2"
+                    data-control="select2"
+                    data-hide-search="true"
+                    name="category"
+                  >
+                    <option selected="selecciona una opción" value="">
+                      Selecciona una opción
+                    </option>
+                    <option>Boleta</option>
+                    <option>Factura</option>
+                    <option>Guía de Remisión</option>
+                  </select>
+
+                  <!--end::Input-->
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="mb-4 fv-row">
+                  <!--begin::Label-->
+                  <label class="required form-label">Efectivo</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <input
+                      type="number"
+                      min="0"
+                      class="form-control mb-2"
+                      placeholder="0.00"
+                    />
+
+                  <!--end::Input-->
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="mb-4 fv-row">
+                  <!--begin::Label-->
+                  <label class="required form-label">Cambio</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <input
+                  type="number"
+                  min="0"
+                  class="form-control mb-2"
+                  placeholder="0.00"
+                />
+
+                  <!--end::Input-->
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="mb-4 fv-row">
+                  <!--begin::Label-->
+                  <label class="required form-label">Subtotal</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <select
+                    class="form-select mb-2"
+                    data-control="select2"
+                    data-hide-search="true"
+                    name="category"
+                  >
+                    <option selected="selecciona una opción" value="">
+                      Selecciona una opción
+                    </option>
+                    <option>Boleta</option>
+                    <option>Factura</option>
+                    <option>Guía de Remisión</option>
+                  </select>
+
+                  <!--end::Input-->
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="mb-4 fv-row">
+                  <!--begin::Label-->
+                  <label class="required form-label">Total</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <input
+                      type="number"
+                      min="0"
+                      class="form-control mb-2"
+                      placeholder="0.00"
+                    />
+
+                  <!--end::Input-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end::Card header-->
+        </div>
+        <!--end::General options-->
+      </div>
+      <!--end::Main column-->
+    </div>
+  </div>
+</div>
+<!--end::Container-->
+<!-- Modal Agregar Productos-->
+<div class="modal fade" tabindex="-1" id="mdlProducts">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header bg-dark">
+              <h4 class="modal-title text-white" id="mdlAddProducts">Agregar Productos</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <div class="input-group mb-5">
+                  <button class="input-group-addon btn bg-dark"><i class="fa fa-search text-white"></i></button>
+                  <input type="text" class="form-control" placeholder="Buscar Productos">
+              </div>
+          </div>
+             <div class="table-responsive">
+              <table class="table striped table-bordered">
+                <thead class="bg-dark text-white">
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Stock</th>
+                    <th class="text-center">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-center">1</td>
+                    <td class="text-center">Cerveza Pilsen</td>
+                    <td class="text-center">Nunca se acaba :v</td>
+                    <td class="text-center">
+                      <button class="btn btn-primary">
+                          <i class="fa fa-shopping-cart mr-2"></i>
+                          <span>Agregar</span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+             </div>
+            </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary text-left" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
+      <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

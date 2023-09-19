@@ -14,8 +14,8 @@ import { ProductsComponent } from './almacen/products/products.component';
 import { ProductFormComponent } from './almacen/products/product-form.component';
 import { ProvidersComponent } from './providers/providers.component';
 import { ProviderFormComponent } from './providers/provider-form.component';
-import { ProductsAddComponent } from './shopping/products-add/products-add.component';
 import { AboutComponent } from './about/about.component';
+import { ShoppingComponent } from './shopping/shopping.component';
 
 //Componentes
 const routes: Routes = [
@@ -40,7 +40,7 @@ const routes: Routes = [
 
       //Compras
 
-      { path: 'compras/entradas/nuevo', component: ProductsAddComponent },
+      { path: 'pos/compras', component: ShoppingComponent },
 
       //Acerca de
 

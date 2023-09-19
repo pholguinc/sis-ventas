@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     NopagesfoundComponent,
-
   ],
   imports: [
     BrowserModule,
