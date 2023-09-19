@@ -21,25 +21,8 @@ export class ProductsService {
 
   async create(data: CreateProductDto) {
     try {
-      const countOfExistingProducts = await this.productRepo.count();
-
-      let dynamicCode;
-
-      if (data.code) {
-        dynamicCode = `PROD-${String(data.code).padStart(8, '0')}`;
-      } else {
-        dynamicCode = this.generateDynamicCode(countOfExistingProducts + 1);
-      }
-
-      //const newProduct = new Product();
-      //newProduct.code = dynamicCode;
-      //newProduct.name = data.name;
-      //newProduct.description = data.description;
-      //newProduct.price = data.price;
-      //newProduct.sale = data.sale;
-      //newProduct.stock = data.stock;
-
       const newProduct = this.productRepo.create(data);
+
       if (data.brandId) {
         const brand = await this.brandRepo.findOne({
           where: { id: data.brandId },
@@ -47,7 +30,7 @@ export class ProductsService {
         newProduct.brand = brand;
       }
       if (data.categoryId) {
-        const category = await this.brandRepo.findOne({
+        const category = await this.categoryRepo.findOne({
           where: { id: data.categoryId },
         });
         newProduct.category = category;
@@ -178,8 +161,6 @@ export class ProductsService {
 
       // Update the properties of the product
       productToUpdate.name = updateProductDto.name || productToUpdate.name;
-      productToUpdate.description =
-        updateProductDto.description || productToUpdate.description;
       productToUpdate.price = updateProductDto.price || productToUpdate.price;
       productToUpdate.stock = updateProductDto.stock || productToUpdate.stock;
 

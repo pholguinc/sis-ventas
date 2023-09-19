@@ -27,9 +27,6 @@ export class Product {
   @Column({ type: 'varchar', length: 255, unique: true })
   name: string;
 
-  @Column({ type: 'text' })
-  description: string;
-
   @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
   price: number;
 
@@ -55,7 +52,9 @@ export class Product {
   @OneToMany(() => SalesDetails, (salesDetails) => salesDetails.product)
   salesDetails: SalesDetails[];
 
-  @ManyToMany(() => Provider, (provider) => provider.products)
+  @ManyToMany(() => Provider, (provider) => provider.products, {
+    nullable: true,
+  })
   @JoinTable({
     name: 'products_provider',
     joinColumn: {

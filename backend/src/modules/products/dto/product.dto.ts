@@ -21,10 +21,6 @@ export class CreateProductDto {
   @ApiProperty({ description: `product's name` })
   readonly name: string;
 
-  @IsString()
-  @IsNotEmpty()
-  @ApiProperty()
-  readonly description: string;
 
   @IsNumber()
   @IsNotEmpty()
@@ -52,7 +48,6 @@ export class CreateProductDto {
   readonly categoryId: string;
 
   @IsArray()
-  @IsNotEmpty()
   @ApiProperty()
   readonly providersIds: string[];
 }

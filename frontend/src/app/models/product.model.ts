@@ -6,8 +6,9 @@ export class Product {
       public description: string,
       public price?: number,
       public stock?: number,
-      public category?: string,
-      public brand?: string,
+      public brandId?: string,
+      public categoryId?: string,
+      public providersIds? : string
   ) {}
 
 
