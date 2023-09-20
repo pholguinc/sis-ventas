@@ -1,14 +1,26 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import {
+  Entity,
+  ManyToOne,
+  JoinColumn,
+  PrimaryGeneratedColumn,
+  Column,
+} from 'typeorm';
 import { Product } from './product.entity';
-import { Provider } from 'src/modules/providers/entities/provider.entity';
+import { Provider } from '../../providers/entities/provider.entity';
+import { DateAt } from '../../../database/date-at.entity';
 
-@Entity()
 export class ProductProvider {
-  @ManyToOne(() => Product, (product) => product.provider)
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @ManyToOne(() => Product, (product) => product.providers)
   @JoinColumn({ name: 'product_id' })
   product: Product;
 
   @ManyToOne(() => Provider, (provider) => provider.products)
   @JoinColumn({ name: 'provider_id' })
   provider: Provider;
+
+  @Column(() => DateAt, { prefix: false })
+  register: DateAt;
 }

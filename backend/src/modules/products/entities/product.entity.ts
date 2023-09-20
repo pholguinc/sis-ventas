@@ -12,7 +12,6 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { SalesDetails } from '../../sales-details/entities/sales-detail.entity';
 import { Provider } from '../../providers/entities/provider.entity';
 
 @Entity({ name: 'products' })
@@ -49,8 +48,6 @@ export class Product {
   category: Brand;
   newProduct: Category;
 
-  @OneToMany(() => SalesDetails, (salesDetails) => salesDetails.product)
-  salesDetails: SalesDetails[];
 
   @ManyToMany(() => Provider, (provider) => provider.products, {
     nullable: true,

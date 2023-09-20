@@ -7,7 +7,7 @@ import {
   IsPositive,
   IsString,
 } from 'class-validator';
-import { Status } from '../entities/sale.entity';
+import { Status } from '../entities/sales.entity';
 
 export class CreateSaleDto {
   @IsNumber()

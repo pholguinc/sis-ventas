@@ -13,7 +13,6 @@ import { BrandsModule } from './modules/brands/brands.module';
 import { ProvidersModule } from './modules/providers/providers.module';
 import { SettingsModule } from './modules/settings/settings.module';
 import { SalesModule } from './modules/sales/sales.module';
-import { SalesDetailsModule } from './modules/sales-details/sales-details.module';
 import configSchema from './config/configSchema';
 
 @Module({
@@ -34,7 +33,6 @@ import configSchema from './config/configSchema';
     ProvidersModule,
     SettingsModule,
     SalesModule,
-    SalesDetailsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -68,7 +68,7 @@ export class SidebarService {
     </span>`,
     iconMenu: '<span class="menu-arrow"></span>',
     submenu: [
-      {title: 'Ingreso de Productos', url: 'mantenimientos/productos'},
+      {title: 'Ingreso de Productos', url: 'pos/compras'},
       {title: 'Detalle de Entradas', url: 'mantenimientos/marcas'},
     ]
     },

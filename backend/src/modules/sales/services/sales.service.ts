@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateSaleDto, UpdateSaleDto } from '../dto/sale.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Sale } from '../entities/sale.entity';
+import { Sale } from '../entities/sales.entity';
 import { ErrorManager } from '../../../utils/error.manager';
 @Injectable()
 export class SalesService {

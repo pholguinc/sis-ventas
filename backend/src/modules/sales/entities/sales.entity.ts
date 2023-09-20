@@ -8,8 +8,8 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { SalesDetails } from '../../sales-details/entities/sales-detail.entity';
 import { Customer } from '../../customers/entities/customer.entity';
+import { SalesDetail } from './salesDetails.entity';
 
 export enum Status {
   Paid = 'Pagado',
@@ -31,7 +31,7 @@ export class Sale {
   @Column('decimal', { precision: 5, scale: 2 })
   cash: number;
 
-  @Column('decimal', { precision: 5, scale: 2 }) 
+  @Column('decimal', { precision: 5, scale: 2 })
   change: number;
 
   @Column({
@@ -49,8 +49,8 @@ export class Sale {
   @JoinColumn({ name: 'customer_id' })
   customer: Customer;
 
-  @OneToMany(() => SalesDetails, (salesDetails) => salesDetails.sale)
-  salesDetails: SalesDetails[];
+  @OneToMany(() => Sale, (sale) => sale.salesDetail)
+  salesDetail: SalesDetail[];
 
   @Column(() => DateAt, { prefix: false })
   register: DateAt;

@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { DateAt } from '../../../database/date-at.entity';
-import { Sale } from '../../sales/entities/sale.entity';
+import { Sale } from '../../sales/entities/sales.entity';
 @Entity({ name: 'customers' })
 export class Customer {
   @PrimaryGeneratedColumn('uuid')

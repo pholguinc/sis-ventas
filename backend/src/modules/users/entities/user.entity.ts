@@ -3,7 +3,7 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Exclude, Type } from 'class-transformer';
 
 import { DateAt } from '../../../database/date-at.entity';
-import { Sale } from '../../sales/entities/sale.entity';
+import { Sale } from '../../sales/entities/sales.entity';
 import { ROLES } from '../../../constants/roles';
 
 @Entity({ name: 'users' })
