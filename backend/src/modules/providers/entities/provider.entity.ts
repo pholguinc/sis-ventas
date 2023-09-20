@@ -29,8 +29,6 @@ export class Provider {
   @Column({ type: 'varchar' })
   address: string;
 
-  @ManyToMany(() => Product, (product) => product.providers)
-  products: Product[];
 
   @Column(() => DateAt, { prefix: false })
   register: DateAt;

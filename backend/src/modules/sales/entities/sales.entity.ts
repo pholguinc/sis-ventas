@@ -4,12 +4,14 @@ import {
   Column,
   Entity,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Customer } from '../../customers/entities/customer.entity';
-import { SalesDetail } from './salesDetails.entity';
+import { Product } from '../../products/entities/product.entity';
 
 export enum Status {
   Paid = 'Pagado',
@@ -49,8 +51,9 @@ export class Sale {
   @JoinColumn({ name: 'customer_id' })
   customer: Customer;
 
-  @OneToMany(() => Sale, (sale) => sale.salesDetail)
-  salesDetail: SalesDetail[];
+  /*@OneToMany(() => Sale, (sale) => sale.salesDetail)
+  salesDetail: SalesDetail[];*/
+
 
   @Column(() => DateAt, { prefix: false })
   register: DateAt;

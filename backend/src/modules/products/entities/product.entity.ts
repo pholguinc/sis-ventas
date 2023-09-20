@@ -13,6 +13,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Provider } from '../../providers/entities/provider.entity';
+import { Sale } from '../../sales/entities/sales.entity';
 
 @Entity({ name: 'products' })
 @Index(['price', 'stock'])
@@ -47,19 +48,5 @@ export class Product {
   @JoinColumn({ name: 'category_id' })
   category: Brand;
   newProduct: Category;
-
-
-  @ManyToMany(() => Provider, (provider) => provider.products, {
-    nullable: true,
-  })
-  @JoinTable({
-    name: 'products_provider',
-    joinColumn: {
-      name: 'product_id',
-    },
-    inverseJoinColumn: {
-      name: 'provider_id',
-    },
-  })
-  providers: Provider[];
+  
 }

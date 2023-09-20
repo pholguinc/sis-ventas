@@ -36,14 +36,6 @@ export class ProductsService {
         newProduct.category = category;
       }
 
-      if (data.providersIds) {
-        const providers = await this.providerRepo.find({
-          where: {
-            id: In(data.providersIds),
-          },
-        });
-        newProduct.providers = providers;
-      }
 
       return this.productRepo.save(newProduct);
     } catch (error) {
