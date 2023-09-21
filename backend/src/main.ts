@@ -34,6 +34,7 @@ async function bootstrap() {
     .addTag('Categories', 'Endpoints relacionados con categorías')
     .addTag('Brands', 'Endpoints relacionados con marcas')
     .addTag('Providers', 'Endpoints relacionados con proveedores')
+    .addTag('SKU', 'Endpoints relacionados con los SKU')
     .addTag('Auth', 'Endpoints relacionados con el login')
     .build();
 
