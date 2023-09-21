@@ -1,3 +1,5 @@
+
+import { SalesDetail } from './../../sales-details/entities/sales-detail.entity';
 import { Brand } from '../../brands/entities/brand.entity';
 import { Category } from '../../categories/entities/category.entity';
 import { DateAt } from '../../../database/date-at.entity';
@@ -6,14 +8,11 @@ import {
   Entity,
   Index,
   JoinColumn,
-  JoinTable,
-  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Provider } from '../../providers/entities/provider.entity';
-import { Sale } from '../../sales/entities/sales.entity';
 
 @Entity({ name: 'products' })
 @Index(['price', 'stock'])
@@ -48,5 +47,11 @@ export class Product {
   @JoinColumn({ name: 'category_id' })
   category: Brand;
   newProduct: Category;
-  
+
+  @OneToMany(() => Product, (product) => product.salesDetails)
+  salesDetails: SalesDetail[];
+
+  @ManyToOne(() => Provider, (provider) => provider.products)
+  @JoinColumn({ name: 'provider_id' })
+  provider: Provider;
 }

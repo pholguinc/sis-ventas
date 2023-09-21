@@ -36,6 +36,12 @@ export class ProductsService {
         newProduct.category = category;
       }
 
+      if (data.providerId) {
+        const provider = await this.providerRepo.findOne({
+          where: { id: data.providerId },
+        });
+        newProduct.provider = provider;
+      }
 
       return this.productRepo.save(newProduct);
     } catch (error) {
@@ -78,7 +84,7 @@ export class ProductsService {
         order: {
           name: 'ASC',
         },
-        relations: ['category', 'brand'],
+        relations: ['category', 'brand', 'provider'],
         select: {
           category: {
             id: false,
@@ -88,6 +94,11 @@ export class ProductsService {
             id: false,
             name: true,
             code: true,
+          },
+
+          provider: {
+            id: false,
+            name: true,
           },
         },
       });
