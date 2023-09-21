@@ -23,28 +23,27 @@ const routes: Routes = [
     path: 'admin',
     component: PagesComponent,
     children: [
-      { path: '', component: DashboardComponent },
-      //Almacén
-      { path: 'almacen/categorias', component: CategoriesComponent },
-      { path: 'almacen/categoria/:id', component: CategoryFormComponent },
-      { path: 'almacen/productos', component: ProductsComponent },
-      { path: 'almacen/producto/:id', component: ProductFormComponent },
+      { path: '', component: DashboardComponent, data: {title : 'Dashboard', subtitle: 'admin'}},
+      { path: 'almacen/categorias', component: CategoriesComponent, data: {title: 'Categoría', subtitle: 'almacen'}},
+      { path: 'almacen/categoria/:id', component: CategoryFormComponent, data: {title: 'Categoría', subtitle: 'almacen'}},
+      { path: 'almacen/productos', component: ProductsComponent,  data: {title: 'Productos', subtitle: 'almacen'}},
+      { path: 'almacen/producto/:id', component: ProductFormComponent,  data: {title: 'Productos', subtitle: 'almacen'}},
 
       //Mantenimientos
-      { path: 'mantenimientos/marcas', component: BrandsComponent },
-      { path: 'mantenimientos/marca/:id', component: BrandFormComponent },
-      { path: 'mantenimientos/clientes', component: CustomersComponent },
-      { path: 'mantenimientos/cliente/:id', component: CustomerFormComponent },
-      { path: 'mantenimientos/proveedores', component: ProvidersComponent },
-      { path: 'mantenimientos/proveedor/:id', component: ProviderFormComponent },
+      { path: 'mantenimientos/marcas', component: BrandsComponent, data: {title: 'Marcas', subtitle: 'mantenimiento'}},
+      { path: 'mantenimientos/marca/:id', component: BrandFormComponent, data: {title: 'Marcas', subtitle: 'mantenimiento'}},
+      { path: 'mantenimientos/clientes', component: CustomersComponent, data: {title: 'Clientes', subtitle: 'mantenimiento'}},
+      { path: 'mantenimientos/cliente/:id', component: CustomerFormComponent, data: {title: 'Clientes', subtitle: 'mantenimiento'}},
+      { path: 'mantenimientos/proveedores', component: ProvidersComponent, data: {title: 'Proveedores', subtitle: 'mantenimiento'}},
+      { path: 'mantenimientos/proveedor/:id', component: ProviderFormComponent, data: {title: 'Proveedores', subtitle: 'mantenimiento'}},
 
       //Compras
 
-      { path: 'pos/compras', component: ShoppingComponent },
+      { path: 'pos/compras', component: ShoppingComponent, data: {title: 'Compras', subtitle: 'pos'}},
 
       //Acerca de
 
-      { path: 'acerca-de', component: AboutComponent },
+      { path: 'acerca-de', component: AboutComponent, data: {title: 'Acerca de', subtitle: 'admin'}},
     ],
   },
 ];
