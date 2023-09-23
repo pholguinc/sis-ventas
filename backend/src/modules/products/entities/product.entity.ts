@@ -1,4 +1,3 @@
-
 import { SalesDetail } from './../../sales-details/entities/sales-detail.entity';
 import { Brand } from '../../brands/entities/brand.entity';
 import { Category } from '../../categories/entities/category.entity';
@@ -54,4 +53,5 @@ export class Product {
   @ManyToOne(() => Provider, (provider) => provider.products)
   @JoinColumn({ name: 'provider_id' })
   provider: Provider;
+
 }

@@ -1,6 +1,12 @@
 import { Product } from '../../products/entities/product.entity';
 import { DateAt } from '../../../database/date-at.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'categories' })
 export class Category {
@@ -18,4 +24,5 @@ export class Category {
 
   @OneToMany(() => Product, (product) => product.category)
   products: Product[];
+
 }

@@ -1,3 +1,4 @@
+import { IsString } from 'class-validator';
 import { Category } from '../../categories/entities/category.entity';
 import { Injectable } from '@nestjs/common';
 import { CreateProductDto, UpdateProductDto } from '../dto/product.dto';
@@ -21,19 +22,28 @@ export class ProductsService {
 
   async create(data: CreateProductDto) {
     try {
-      const newProduct = this.productRepo.create(data);
+      const countOfExistingProducts = await this.productRepo.count();
+
+      let dynamicCode;
+
+      if (data.code) {
+        const randomPart = Math.floor(Math.random() * 10000000000000);
+        const providedCode = String(data.code);
+        dynamicCode = `PROD-${providedCode}${randomPart}`;
+      } else {
+        dynamicCode = this.generateDynamicCode(countOfExistingProducts + 1);
+      }
+
+      const newProduct = this.productRepo.create({
+        ...data,
+        code: dynamicCode,
+      });
 
       if (data.brandId) {
         const brand = await this.brandRepo.findOne({
           where: { id: data.brandId },
         });
         newProduct.brand = brand;
-      }
-      if (data.categoryId) {
-        const category = await this.categoryRepo.findOne({
-          where: { id: data.categoryId },
-        });
-        newProduct.category = category;
       }
 
       if (data.providerId) {
@@ -43,37 +53,21 @@ export class ProductsService {
         newProduct.provider = provider;
       }
 
+      if (data.categoryId) {
+        const category = await this.categoryRepo.findOne({
+          where: { id: data.categoryId },
+        });
+        newProduct.category = category;
+      }
+
       return this.productRepo.save(newProduct);
     } catch (error) {
       throw ErrorManager.createSignatureError(error.message);
     }
   }
 
-  /*async create(data: CreateProductDto) {
-    try {
-      const countOfExistingProducts = await this.productRepo.count();
-
-      let dynamicCode;
-
-      if (data.code) {
-        dynamicCode = `PROD-${String(data.code).padStart(8, '0')}`;
-      } else {
-        dynamicCode = this.generateDynamicCode(countOfExistingProducts + 1);
-      }
-
-      const newProduct = this.brandRepo.create({
-        ...data,
-        code: dynamicCode,
-      });
-
-      return await this.brandRepo.save(newProduct);
-    } catch (error) {
-      throw ErrorManager.createSignatureError(error.message);
-    }
-  }*/
-
   generateDynamicCode(count: number) {
-    const prefix = 'MARCA';
+    const prefix = 'CAT';
     const formattedCount = String(count).padStart(5, '0');
     return `${prefix}-${formattedCount}`;
   }
