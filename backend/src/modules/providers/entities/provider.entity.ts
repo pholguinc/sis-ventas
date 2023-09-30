@@ -1,6 +1,12 @@
 import { Product } from '../../products/entities/product.entity';
 import { DateAt } from '../../../database/date-at.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'providers' })
 export class Provider {
@@ -22,7 +28,10 @@ export class Provider {
   @Column({ type: 'varchar' })
   address: string;
 
-  @OneToMany(() => Product, (product) => product.provider)
+  /*@OneToMany(() => Product, (product) => product.providers)
+  products: Product[];*/
+
+  @ManyToMany(() => Product, (product) => product.providers)
   products: Product[];
 
   @Column(() => DateAt, { prefix: false })

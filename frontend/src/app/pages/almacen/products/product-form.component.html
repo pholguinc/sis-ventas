@@ -276,19 +276,19 @@
 
           <!--begin::Select MProveedores-->
           <div class="mb-10 fv-row">
-            <!--begin::Label-->
+            <!--begin::Label
             <label class="required form-label"
               >Selleciona el(los) proveedor(es)</label
             >
             <!--end::Label-->
-            <!--begin::Input-->
+            <!--begin::Input
             <div class="input-group">
               <select class="form-select mb-2"
               data-control="select2"
               data-placeholder="Selecciona una opción"
                data-allow-clear="true"
-               name="providersIds"
-              formControlName="providersIds"
+               name="providerId"
+              formControlName="providerId"
                multiple="multiple">
               <option *ngFor="let item of provider" [value]="item.id">
                 {{ item.name }}

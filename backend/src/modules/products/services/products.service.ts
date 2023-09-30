@@ -29,7 +29,7 @@ export class ProductsService {
       if (data.code) {
         const randomPart = Math.floor(Math.random() * 10000000000000);
         const providedCode = String(data.code);
-        dynamicCode = `PROD-${providedCode}${randomPart}`;
+        dynamicCode = `${providedCode}${randomPart}`;
       } else {
         dynamicCode = this.generateDynamicCode(countOfExistingProducts + 1);
       }
@@ -46,13 +46,6 @@ export class ProductsService {
         newProduct.brand = brand;
       }
 
-      if (data.providerId) {
-        const provider = await this.providerRepo.findOne({
-          where: { id: data.providerId },
-        });
-        newProduct.provider = provider;
-      }
-
       if (data.categoryId) {
         const category = await this.categoryRepo.findOne({
           where: { id: data.categoryId },
@@ -60,9 +53,18 @@ export class ProductsService {
         newProduct.category = category;
       }
 
+      if (data.providersIds) {
+        const providers = await this.providerRepo.find({
+          where: {
+            id: In(data.providersIds),
+          },
+        });
+        newProduct.providers = providers;
+      }
+
       return this.productRepo.save(newProduct);
     } catch (error) {
-      throw ErrorManager.createSignatureError(error.message);
+      throw ErrorManager.createSignatureError(error);
     }
   }
 
@@ -78,7 +80,7 @@ export class ProductsService {
         order: {
           name: 'ASC',
         },
-        relations: ['category', 'brand', 'provider'],
+        relations: ['category', 'brand', 'providers'],
         select: {
           category: {
             id: false,
@@ -90,8 +92,8 @@ export class ProductsService {
             code: true,
           },
 
-          provider: {
-            id: false,
+          providers: {
+            id: true,
             name: true,
           },
         },
@@ -146,7 +148,7 @@ export class ProductsService {
         productToUpdate.brand = brand;
       }
 
-      if (updateProductDto.categoryId) {
+      /*if (updateProductDto.categoryId) {
         const category = await this.categoryRepo.findOne({
           where: { id: updateProductDto.categoryId },
         });
@@ -154,7 +156,7 @@ export class ProductsService {
           throw new Error('Category not found.');
         }
         //productToUpdate.category = category;
-      }
+      }*/
 
       // Update the properties of the product
       productToUpdate.name = updateProductDto.name || productToUpdate.name;

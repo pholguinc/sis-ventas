@@ -48,9 +48,9 @@ export class ProductFormComponent implements OnInit {
       stock: ['', Validators.required],
       price: ['', Validators.required],
       sale: ['', Validators.required],
-      categoryId : ['', Validators.required],
       brandId: ['', Validators.required],
-      providersIds: [[], [Validators.required]],
+      categoryId : ['', Validators.required],
+      /*providerId: [[], [Validators.required]],*/
 
     });
     const id = this.activatedRoute.snapshot.params['id'];
@@ -113,6 +113,7 @@ export class ProductFormComponent implements OnInit {
         },
       });
     }
+    console.log(this.productForm.value)
   }
 
   dataProduct(id: string) {

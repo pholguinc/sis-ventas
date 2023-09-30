@@ -24,7 +24,7 @@ export class SalesDetail {
   @JoinColumn({ name: 'sale_id' })
   sales: Sale;
 
-  @ManyToOne(() => Product, (product) => product.salesDetails)
+  /*@ManyToOne(() => Product, (product) => product.salesDetails)
   @JoinColumn({ name: 'product_id' })
-  products: Product;
+  products: Product;*/
 }

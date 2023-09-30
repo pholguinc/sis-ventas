@@ -7,6 +7,8 @@ import {
   Entity,
   Index,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -47,11 +49,22 @@ export class Product {
   category: Brand;
   newProduct: Category;
 
-  @OneToMany(() => Product, (product) => product.salesDetails)
-  salesDetails: SalesDetail[];
+  @ManyToMany(() => Provider, (provider) => provider.products)
+  @JoinTable({
+    name: 'products_providers',
+    joinColumn: {
+      name: 'product_id',
+    },
+    inverseJoinColumn: {
+      name: 'provider_id',
+    },
+  })
+  providers: Provider[];
 
-  @ManyToOne(() => Provider, (provider) => provider.products)
-  @JoinColumn({ name: 'provider_id' })
-  provider: Provider;
+  /*@OneToMany(() => Product, (product) => product.salesDetails)
+  salesDetails: SalesDetail[];*/
 
+  /*@ManyToOne(() => Provider, (provider) => provider.products)
+  @JoinColumn({ name: 'provider_ids' })
+  providers: Provider[];*/
 }

@@ -46,9 +46,9 @@ export class CreateProductDto {
   @ApiProperty()
   readonly categoryId: string;
 
-  @IsNotEmpty()
+  @IsArray()
   @ApiProperty()
-  readonly providerId: string;
+  readonly providersIds: string[];
 }
 
 export class UpdateProductDto extends PartialType(CreateProductDto) {}
