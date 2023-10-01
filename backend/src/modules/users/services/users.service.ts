@@ -5,16 +5,31 @@ import { User } from '../entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { ErrorManager } from 'src/utils/error.manager';
+import { Profile } from '../entities/profile.entity';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectRepository(User) private userRepo: Repository<User>) {}
+  constructor(
+    @InjectRepository(User) private userRepo: Repository<User>,
+    @InjectRepository(Profile) private profileRepo: Repository<Profile>,
+  ) {}
 
   async create(data: CreateUserDto) {
     try {
+      const profile = new Profile();
+      profile.names = data.names;
+      profile.lastname_pater = data.lastname_pater;
+      profile.lastname_mater = data.lastname_mater;
+      profile.phone = data.phone;
+      profile.numDoc = data.numDoc;
+      profile.address = data.address;
+
+      const newProfile = await this.profileRepo.save(profile);
+
       const newUser = this.userRepo.create(data);
       const hashPassword = await bcrypt.hash(newUser.password, 10);
       newUser.password = hashPassword;
+      newUser.profile = newProfile;
       return this.userRepo.save(newUser);
     } catch (error) {
       throw ErrorManager.createSignatureError(error.message);
@@ -24,9 +39,10 @@ export class UsersService {
   async findAll(): Promise<User[]> {
     try {
       const users = await this.userRepo.find({
-        order: {
-          names: 'ASC',
+        where: {
+          role: 'customer'
         },
+        relations: ['profile'],
       });
       if (users.length === 0) {
         throw new ErrorManager({

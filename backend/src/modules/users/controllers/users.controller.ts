@@ -14,14 +14,13 @@ import { CreateUserDto, UpdateUserDto } from '../dto/user.dto';
 
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { RolesGuard } from '../../../auth/guards/roles.guard';
-import { Admin } from 'src/auth/decorators/admin.decorator';
 import { Public } from 'src/auth/decorators/public.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
+import { Roles } from '../../../auth/decorators/roles.decorator';
+import { Role } from '../../../auth/models/roles.model';
 
 //import { Public } from '../../../auth/decorators/public.decorator';
 
-@UseGuards(AuthGuard('jwt'))
+//@UseGuards(AuthGuard('jwt'))
 @ApiTags('Users')
 @Controller('users')
 export class UsersController {
@@ -35,6 +34,7 @@ export class UsersController {
 
   //@Public() #Define si el endpoint es pública
 
+  @Roles(Role.ADMIN)
   @Get()
   @ApiOperation({ summary: 'Petición HTTP para listar usuarios' })
   findAll() {
