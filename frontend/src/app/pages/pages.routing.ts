@@ -16,12 +16,14 @@ import { ProvidersComponent } from './providers/providers.component';
 import { ProviderFormComponent } from './providers/provider-form.component';
 import { AboutComponent } from './about/about.component';
 import { ShoppingComponent } from './shopping/shopping.component';
+import { AuthGuard } from '../auth/guards/auth.guard';
 
 //Componentes
 const routes: Routes = [
   {
     path: 'admin',
     component: PagesComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: DashboardComponent, data: {title : 'Dashboard', subtitle: 'admin'}},
       { path: 'almacen/categorias', component: CategoriesComponent, data: {title: 'Categoría', subtitle: 'almacen'}},
