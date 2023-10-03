@@ -35,6 +35,7 @@ import { ProvidersComponent } from './providers/providers.component';
 import { ProviderFormComponent } from './providers/provider-form.component';
 import { AboutComponent } from './about/about.component';
 import { ShoppingComponent } from './shopping/shopping.component';
+import { InventoryComponent } from './almacen/inventory/inventory.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ShoppingComponent } from './shopping/shopping.component';
     ProviderFormComponent,
     AboutComponent,
     ShoppingComponent,
+    InventoryComponent,
 
   ],
   imports: [

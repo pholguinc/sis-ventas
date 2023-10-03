@@ -17,6 +17,7 @@ import { ProviderFormComponent } from './providers/provider-form.component';
 import { AboutComponent } from './about/about.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { AuthGuard } from '../auth/guards/auth.guard';
+import { InventoryComponent } from './almacen/inventory/inventory.component';
 
 //Componentes
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'almacen/categoria/:id', component: CategoryFormComponent, data: {title: 'Categoría', subtitle: 'almacen'}},
       { path: 'almacen/productos', component: ProductsComponent,  data: {title: 'Productos', subtitle: 'almacen'}},
       { path: 'almacen/producto/:id', component: ProductFormComponent,  data: {title: 'Productos', subtitle: 'almacen'}},
+      { path: 'almacen/inventario', component: InventoryComponent,  data: {title: 'Inventario', subtitle: 'almacen'}},
 
       //Mantenimientos
       { path: 'mantenimientos/marcas', component: BrandsComponent, data: {title: 'Marcas', subtitle: 'mantenimiento'}},
