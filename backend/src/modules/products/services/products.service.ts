@@ -54,12 +54,10 @@ export class ProductsService {
       }
 
       if (data.providersIds) {
-        const providers = await this.providerRepo.find({
-          where: {
-            id: In(data.providersIds),
-          },
+        const provider = await this.providerRepo.find({
+          where: { id: In(data.providersIds) },
         });
-        newProduct.providers = providers;
+        newProduct.providers = provider;
       }
 
       return this.productRepo.save(newProduct);

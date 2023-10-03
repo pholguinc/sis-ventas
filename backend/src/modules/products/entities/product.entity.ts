@@ -61,10 +61,6 @@ export class Product {
   })
   providers: Provider[];
 
-  /*@OneToMany(() => Product, (product) => product.salesDetails)
-  salesDetails: SalesDetail[];*/
-
-  /*@ManyToOne(() => Provider, (provider) => provider.products)
-  @JoinColumn({ name: 'provider_ids' })
-  providers: Provider[];*/
+  @OneToMany(() => Product, (product) => product.salesDetails)
+  salesDetails: SalesDetail[];
 }

@@ -1,5 +1,6 @@
+import { Shopping } from '../../shopping/entities/shopping.entity';
 import { DateAt } from '../../../database/date-at.entity';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'settings' })
 export class Setting {
@@ -26,6 +27,9 @@ export class Setting {
 
   @Column({ type: 'varchar' })
   address: string;
+
+  @OneToMany(() => Shopping, (shopping) => shopping.setting)
+  shoppings: Shopping[];
 
   @Column(() => DateAt, { prefix: false })
   register: DateAt;
