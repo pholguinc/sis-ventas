@@ -9,6 +9,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { UsersModule } from 'src/modules/users/users.module';
 import { AuthController } from './controllers/auth.controller';
 import config from '../config/config';
+import { RefreshJwtStrategy } from './strategies/refreshToken.strategy';
 
 @Module({
   imports: [
@@ -20,13 +21,13 @@ import config from '../config/config';
         return {
           secret: configService.jwtSecret,
           signOptions: {
-            expiresIn: '10d',
+            expiresIn: '60s',
           },
         };
       },
     }),
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy, RefreshJwtStrategy],
   controllers: [AuthController],
 })
 export class AuthModule {}
