@@ -50,7 +50,7 @@ export class ProductFormComponent implements OnInit {
       sale: ['', Validators.required],
       brandId: ['', Validators.required],
       categoryId : ['', Validators.required],
-      /*providerId: [[], [Validators.required]],*/
+      providersIds: [[], [Validators.required]],
 
     });
     const id = this.activatedRoute.snapshot.params['id'];
@@ -67,7 +67,7 @@ export class ProductFormComponent implements OnInit {
     if (id === 'nuevo') {
 
      this.isLoading = true;
-      this.productsService.addProduct(this.productForm.value).subscribe({
+     this.productsService.addProduct(this.productForm.value).subscribe({
         next: (res) => {
           Swal.fire({
             title: 'Correcto',

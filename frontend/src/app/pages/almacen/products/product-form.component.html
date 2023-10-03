@@ -281,14 +281,14 @@
               >Selleciona el(los) proveedor(es)</label
             >
             <!--end::Label-->
-            <!--begin::Input
+            <!--begin::Input-->
             <div class="input-group">
               <select class="form-select mb-2"
               data-control="select2"
               data-placeholder="Selecciona una opción"
                data-allow-clear="true"
                name="providerId"
-              formControlName="providerId"
+              formControlName="providersIds"
                multiple="multiple">
               <option *ngFor="let item of provider" [value]="item.id">
                 {{ item.name }}
