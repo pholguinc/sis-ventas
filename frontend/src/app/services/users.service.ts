@@ -1,30 +1,29 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginForm } from '../interfaces/login-form.interface';
 
 const base_url = environment.base_url;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
-
-  constructor(private http: HttpClient, private router:Router) {}
-
+  constructor(private http: HttpClient, private router: Router) {}
 
   loadUsers(): Observable<any> {
-
     const token = localStorage.getItem('token');
 
-    const obj = new HttpHeaders().set('Authorization', "bearer "+token)
+    const obj = new HttpHeaders().set('Authorization', 'bearer ' + token);
 
-    return this.http.get(`${base_url}/users`, { headers:obj });
+    return this.http.get(`${base_url}/users`, { headers: obj });
   }
 
-  logout(){
+
+
+  logout() {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/login');
   }
@@ -36,5 +35,4 @@ export class UsersService {
       })
     );
   }
-
 }

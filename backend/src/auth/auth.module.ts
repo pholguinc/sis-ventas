@@ -21,7 +21,7 @@ import { RefreshJwtStrategy } from './strategies/refreshToken.strategy';
         return {
           secret: configService.jwtSecret,
           signOptions: {
-            expiresIn: '60s',
+            expiresIn: '1h',
           },
         };
       },
