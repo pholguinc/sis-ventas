@@ -22,7 +22,7 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private usersService: UsersService
+    private usersService: UsersService,
   ) {}
 
   login() {
@@ -30,10 +30,12 @@ export class LoginComponent {
 
     this.usersService.loginAccess(this.loginForm.value).subscribe({
       next: (res) => {
-        const { access_token, user } = res;
+        const { user } = res;
         const { names } = user;
 
+
         console.log(res);
+        console.log(user)
         let timerInterval: any;
 
         Swal.fire({

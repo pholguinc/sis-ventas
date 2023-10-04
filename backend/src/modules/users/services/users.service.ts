@@ -40,7 +40,7 @@ export class UsersService {
     try {
       const users = await this.userRepo.find({
         where: {
-          role: 'customer'
+          role: 'customer',
         },
         relations: ['profile'],
       });
