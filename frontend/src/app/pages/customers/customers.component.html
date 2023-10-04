@@ -110,10 +110,10 @@
               Acciones
             </mat-header-cell>
             <mat-cell *matCellDef="let customer" data-label="Acciones" class="mt-4">
-              <a [routerLink]="['/admin/mantenimientos/cliente', customer.id]" class="btn btn-primary margin-btn">
+              <a [routerLink]="['/admin/mantenimientos/cliente', customer.id]" class="btn btn-sm btn-primary margin-btn">
                 <i class="bi bi-pencil-fill fs-4"></i>
               </a>
-              <a class="btn btn-danger" (click)="deleteCustomer(customer)">
+              <a class="btn btn-danger btn-sm margin-btn" (click)="deleteCustomer(customer)">
                 <i class="bi bi-trash-fill fs-4"></i>
               </a>
             </mat-cell>

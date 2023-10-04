@@ -13,9 +13,10 @@ import {
 } from '@nestjs/common';
 import { SettingsService } from '../services/settings.service';
 import { CreateSettingDto, UpdateSettingDto } from '../dto/setting.dto';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 //@UseGuards(AuthGuard('jwt'))
+@ApiTags('Settings')
 @Controller('settings')
 export class SettingsController {
   constructor(private readonly settingsService: SettingsService) {}

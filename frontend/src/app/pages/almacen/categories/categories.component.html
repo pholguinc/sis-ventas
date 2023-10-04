@@ -82,18 +82,12 @@
               Acciones
             </mat-header-cell>
             <mat-cell *matCellDef="let category" data-label="Acciones" class="mt-4">
-      
+
               <a [routerLink]="['/admin/almacen/categoria', category.id]" class="btn btn-sm btn-primary margin-btn">
                 <i class="bi bi-pencil-fill fs-4"></i>
               </a>
               <a class="btn btn-danger btn-sm margin-btn" (click)="deleteCategory(category)">
                 <i class="bi bi-trash-fill fs-4"></i>
-              </a>
-              <a class="btn btn-success btn-sm margin-btn">
-                <i class="bi bi-file-excel fs-4"></i>
-              </a>
-              <a class="btn btn-danger btn-sm">
-                <i class="bi bi-file-pdf fs-4"></i>
               </a>
             </mat-cell>
           </ng-container>

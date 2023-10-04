@@ -41,7 +41,7 @@ export class LoginComponent {
           html: 'Será redireccionado en <b></b> milisegundos.',
           icon: 'success',
           showConfirmButton: false,
-          timer: 2000000,
+          timer: 2000,
           timerProgressBar: true,
           didOpen: () => {
             Swal.showLoading();

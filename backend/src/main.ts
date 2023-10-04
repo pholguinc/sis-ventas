@@ -36,6 +36,16 @@ async function bootstrap() {
     .addTag('Providers', 'Endpoints relacionados con proveedores')
     .addTag('SKU', 'Endpoints relacionados con los SKU')
     .addTag('Auth', 'Endpoints relacionados con el login')
+    .addTag(
+      'Settings',
+      'Endpoints relacionados con la configuración del sistema',
+    )
+    .addTag('Sales', 'Endpoints relacionados con las ventas')
+    .addTag(
+      'Sales-Details',
+      'Endpoints relacionados con el detalle de la venta',
+    )
+    .addTag('Shoppingales-Details', 'Endpoints relacionados con las compras')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
