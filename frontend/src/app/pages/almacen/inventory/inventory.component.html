@@ -1,1 +1,137 @@
-<p>inventory works!</p>
+<!--begin::Category-->
+<div class="card card-flush">
+  <!--begin::Card header-->
+  <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+
+    <!--end::Card title-->
+    <!--begin::Card toolbar-->
+    <div class="card-toolbar">
+      <!--begin::Add customer-->
+      <a routerLink="/admin/almacen/producto/nuevo" class="btn btn-danger margin-btn">
+        <i class="fa fa-file-pdf" id="p-icon"></i>
+        <span>Generar Inventario</span></a
+      >
+      <a routerLink="/admin/almacen/producto/nuevo" class="btn btn-success">
+        <i class="fa fa-file-excel" id="p-icon"></i>
+        <span>Exportar a Excel</span></a
+      >
+      <!--end::Add customer-->
+    </div>
+    <!--end::Card toolbar-->
+  </div>
+  <!--end::Card header-->
+  <!--begin::Card body-->
+  <div class="card-body pt-0">
+    <!--begin::Table-->
+    <div class="example-container" style="overflow-y: auto; justify-content: center;">
+      <div class="table-responsive">
+        <mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="code">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Código
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Código" class="mt-4">
+              {{ row.code }}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Nombre
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Nombre" class="mt-4">
+              {{ row.name }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="stock">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Stock
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="mt-4">
+              {{ row.stock }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Precio Venta
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="mt-4">
+              {{ row.price }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="price_sale">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Precio Compra
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="mt-4">
+              {{ row.price }}
+            </mat-cell>
+          </ng-container>
+
+
+          <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Acciones
+            </mat-header-cell>
+            <mat-cell *matCellDef="let product" data-label="Acciones" class="mt-4">
+
+              <a (click)="editStock(product.id)" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#mdlStock">
+                <i class="fa fa-cog fs-4"></i>
+                <span> Ajustar </span>
+              </a>
+
+            </mat-cell>
+          </ng-container>
+
+          <tr *matNoDataRow class="nodata">
+            <p>No se encontraron resultados con su búsqueda</p>
+          </tr>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+        </mat-table>
+      </div>
+
+      <mat-paginator
+        [pageSize]="5"
+        [hidePageSize]="true"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+
+    <!--end::Table-->
+  </div>
+  <!--end::Card body-->
+</div>
+<!--end::Category-->
+
+<!-- Modal Agregar Productos-->
+<div class="modal fade" tabindex="-1" id="mdlStock">
+  <div class="modal-dialog modal-md">
+      <div class="modal-content">
+          <div class="modal-header bg-dark">
+              <h4 class="modal-title text-white" id="mdlAddProducts">Ajustar Stock del Producto </h4>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="inventoryForm">
+              <div class="form-group mb-4">
+                <label for="" class="fw-bolder mb-2">Stock inicial</label>
+                <input type="text" class="form-control" formControlName="stock">
+              </div>
+               <div class="form-group">
+                <label for="" class="fw-bolder mb-2">Nuevo Stock</label>
+                <input type="text" class="form-control" placeholder="INgrese la cantidad del stock">
+               </div>
+            </form>
+            </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary text-left" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
+      <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

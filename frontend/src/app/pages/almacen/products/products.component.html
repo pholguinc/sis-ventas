@@ -117,8 +117,8 @@
               Acciones
             </mat-header-cell>
             <mat-cell *matCellDef="let product" data-label="Acciones" class="mt-4">
-              
-              <a [routerLink]="['/admin/almacen/producto', product.id]" class="btn btn-sm btn-primary margin-btn">
+
+              <a [routerLink]="[product.id]" class="btn btn-sm btn-primary margin-btn">
                 <i class="bi bi-pencil-fill fs-4"></i>
               </a>
               <a class="btn btn-danger btn-sm margin-btn" (click)="deleteProduct(product)">
