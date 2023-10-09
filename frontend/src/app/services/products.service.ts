@@ -39,6 +39,11 @@ export class ProductsService {
     return this.http.put<Product>(`${base_url}/products/${id}`, product,{ headers: this.getHeadersToken() });
   }
 
+  //Función para actualizar el Stock y validar token
+  updateStock(id: string, product:Product):Observable<Product> {
+    return this.http.patch<Product>(`${base_url}/products/${id}`, product,{ headers: this.getHeadersToken() });
+  }
+
   //Función para eliminar el Producto y validar token
   deleteProduct(id: string): Observable<Product> {
     return this.http.delete<Product>(`${base_url}/products/${id}`, { headers: this.getHeadersToken() });

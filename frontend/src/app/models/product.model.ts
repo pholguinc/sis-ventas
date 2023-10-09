@@ -8,7 +8,6 @@ export class Product {
       public stock?: number,
       public brandId?: string,
       public categoryId?: string,
-      /*public providerId? : string*/
   ) {}
 
 

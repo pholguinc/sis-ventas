@@ -11,6 +11,11 @@ export class CreateProductDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
+  readonly id?: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
   readonly code: string;
 
   @IsString()

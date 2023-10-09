@@ -2,12 +2,14 @@
 <div class="card card-flush">
   <!--begin::Card header-->
   <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-
     <!--end::Card title-->
     <!--begin::Card toolbar-->
     <div class="card-toolbar">
       <!--begin::Add customer-->
-      <a routerLink="/admin/almacen/producto/nuevo" class="btn btn-danger margin-btn">
+      <a
+        routerLink="/admin/almacen/producto/nuevo"
+        class="btn btn-danger margin-btn"
+      >
         <i class="fa fa-file-pdf" id="p-icon"></i>
         <span>Generar Inventario</span></a
       >
@@ -23,7 +25,10 @@
   <!--begin::Card body-->
   <div class="card-body pt-0">
     <!--begin::Table-->
-    <div class="example-container" style="overflow-y: auto; justify-content: center;">
+    <div
+      class="example-container"
+      style="overflow-y: auto; justify-content: center"
+    >
       <div class="table-responsive">
         <mat-table [dataSource]="dataSource" matSort>
           <ng-container matColumnDef="code">
@@ -70,17 +75,25 @@
             </mat-cell>
           </ng-container>
 
-
           <ng-container matColumnDef="acciones">
             <mat-header-cell *matHeaderCellDef mat-sort-header>
               Acciones
             </mat-header-cell>
-            <mat-cell *matCellDef="let product" data-label="Acciones" class="mt-4">
-
-              <a (click)="editStock(product.id)" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#mdlStock">
+            <mat-cell
+              *matCellDef="let product"
+              data-label="Acciones"
+              class="mt-4"
+            >
+              <a
+                (click)="editStock(product.id)"
+                class="btn btn-sm btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#mdlStock"
+              >
                 <i class="fa fa-cog fs-4"></i>
                 <span> Ajustar </span>
               </a>
+
 
             </mat-cell>
           </ng-container>
@@ -106,31 +119,58 @@
   <!--end::Card body-->
 </div>
 <!--end::Category-->
-
 <!-- Modal Agregar Productos-->
 <div class="modal fade" tabindex="-1" id="mdlStock">
   <div class="modal-dialog modal-md">
+    <form  [formGroup]="inventoryForm" (submit)="updateStock(this.inventoryForm.get('id')?.value)">
       <div class="modal-content">
-          <div class="modal-header bg-dark">
-              <h4 class="modal-title text-white" id="mdlAddProducts">Ajustar Stock del Producto </h4>
-          </div>
-          <div class="modal-body">
-            <form [formGroup]="inventoryForm">
-              <div class="form-group mb-4">
-                <label for="" class="fw-bolder mb-2">Stock inicial</label>
-                <input type="text" class="form-control" formControlName="stock">
-              </div>
-               <div class="form-group">
-                <label for="" class="fw-bolder mb-2">Nuevo Stock</label>
-                <input type="text" class="form-control" placeholder="INgrese la cantidad del stock">
-               </div>
-            </form>
+        <div class="modal-header bg-dark">
+          <h4 class="modal-title text-white">
+            Ajustar Stock del Producto
+          </h4>
+        </div>
+        <div class="modal-body">
+
+
+            <div class="form-group">
+              <label class="fw-bolder mb-2">Nuevo Stock</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Ingrese la cantidad del stock"
+                formControlName="stock"
+              />
             </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-primary text-left" data-bs-dismiss="modal">Cerrar</button>
-          </div>
+
+        </div>
+        <div class="modal-footer">
+
+
+          <button type="submit" class="btn btn-primary text-left" [disabled]="loading">
+            <div class="row align-items-center" >
+              <div class="col-auto">
+                <div class="semipolar-spinner" :style="spinnerStyle" *ngIf="loading">
+                  <div class="ring"></div>
+                  <div class="ring"></div>
+                  <div class="ring"></div>
+                  <div class="ring"></div>
+                  <div class="ring"></div>
+                </div>
+                <i class="fa fa-save fs-4" *ngIf="!loading"></i>
+              </div>
+              <div class="col">
+                <span *ngIf="loading">Enviando....</span>
+                <span *ngIf="!loading">Actualizar</span>
+              </div>
+            </div>
+          </button>
+
+
+
+        </div>
       </div>
-      <!-- /.modal-content -->
+    </form>
+    <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
 </div>
