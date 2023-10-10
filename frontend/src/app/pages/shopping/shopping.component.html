@@ -249,11 +249,12 @@
                       data-control="select2"
                       data-hide-search="true"
                       name="provider"
+                      (change)="applyProviderFilter($event)"
                     >
                       <option selected="selecciona una opción" value="">
                         Selecciona una opción
                       </option>
-                      <option value="item.id" *ngFor="let item of provider">{{ item.name }}</option>
+                      <option [value]="item.id" *ngFor="let item of provider">{{ item.name }}</option>
                     </select>
 
                     <!--end::Input-->
