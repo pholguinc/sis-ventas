@@ -87,4 +87,14 @@ export class ProvidersService {
       throw ErrorManager.createSignatureError(error.message);
     }
   }
+
+  async getProductsByProvider(providerId: string) {
+    const provider = await this.providerRepo
+      .createQueryBuilder('provider')
+      .leftJoinAndSelect('provider.products', 'products')
+      .where('provider.id = :id', { id: providerId })
+      .getOne();
+
+    return provider.products;
+  }
 }

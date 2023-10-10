@@ -1,4 +1,3 @@
-import { IsString } from 'class-validator';
 import { Category } from '../../categories/entities/category.entity';
 import { Injectable } from '@nestjs/common';
 import { CreateProductDto, UpdateProductDto } from '../dto/product.dto';
@@ -182,4 +181,6 @@ export class ProductsService {
       throw ErrorManager.createSignatureError(error.message);
     }
   }
+
+  
 }

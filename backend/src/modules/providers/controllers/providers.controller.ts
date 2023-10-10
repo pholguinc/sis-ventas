@@ -49,4 +49,9 @@ export class ProvidersController {
   remove(@Param('id') id: string) {
     return this.providersService.remove(id);
   }
+
+  @Get(':id/products')
+  getProductsByProvider(@Param('id') id: string) {
+    return this.providersService.getProductsByProvider(id);
+  }
 }
