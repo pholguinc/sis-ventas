@@ -39,7 +39,7 @@ Una vez hecho ello procedemos a levenatar nuestro contendor de docker.
 **NOTA:** Cabe recalcar que para ello debes de haber modificado las variables de entorno ya que con ello se hará las configuraciones respectivas.
 
 
-Ahora procederemos a leventar nuestro backend y para ello ejecutaremos el siguiente comando:
+Ahora procederemos a levantar nuestro backend y para ello ejecutaremos el siguiente comando:
 
 ```bash
   yarn run start:dev
@@ -57,7 +57,7 @@ Una vez realizado ello, procedermos a instalar las dependencias que necesita nue
   yarn install
 ```
 
-Y para finalizar levanataremos nuestro proyecto de Angular, el cual ejecutamos el siguiente comando:
+Y para finalizar levantaremos nuestro proyecto de Angular, el cual ejecutamos el siguiente comando:
 
 ```bash
   ng serve
