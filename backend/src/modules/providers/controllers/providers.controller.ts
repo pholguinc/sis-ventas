@@ -14,7 +14,7 @@ import { CreateProviderDto, UpdateProviderDto } from '../dto/provider.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 
-@UseGuards(AuthGuard('jwt'))
+//@UseGuards(AuthGuard('jwt'))
 @ApiTags('Providers')
 @Controller('providers')
 export class ProvidersController {

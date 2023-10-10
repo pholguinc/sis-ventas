@@ -18,7 +18,7 @@
             <div class="card-body p-0">
               <div class="row pt-8 px-7">
                 <div class="col-md-12">
-                  <div class="mb-10 fv-row">
+                  <div class="mb-5 fv-row">
                     <!--begin::Input group-->
                   <div class="input-group mb-5">
                     <button class="input-group-text btn btn-dark" data-bs-toggle="modal" data-bs-target="#mdlProducts">
@@ -27,62 +27,6 @@
                     </button>
                   </div>
                   <!--end::Input group-->
-
-                    <!--end::Input-->
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="mb-4 fv-row">
-                    <!--begin::Label-->
-                    <label class="required form-label">Cantidad</label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <div class="input-group has-validation">
-                      <input
-                        type="number"
-                        min="0"
-                        class="form-control mb-2"
-                        placeholder="0.00"
-                      />
-                    </div>
-
-                    <!--end::Input-->
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="mb-4 fv-row">
-                    <!--begin::Label-->
-                    <label class="required form-label"
-                      >Precio de Unitario</label
-                    >
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <div class="input-group has-validation">
-                      <input
-                        type="number"
-                        min="0"
-                        class="form-control mb-2"
-                        placeholder="0.00"
-                      />
-                    </div>
-
-                    <!--end::Input-->
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="mb-4 fv-row">
-                    <!--begin::Label-->
-                    <label class="required form-label">Precio Total</label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <div class="input-group has-validation">
-                      <input
-                        type="number"
-                        min="0"
-                        class="form-control mb-2"
-                        placeholder="0.00"
-                      />
-                    </div>
 
                     <!--end::Input-->
                   </div>
@@ -114,6 +58,7 @@
                       </tr>
                     </tbody>
                   </table>
+
                 </div>
               </div>
             </div>
@@ -167,14 +112,12 @@
                     class="form-select mb-2"
                     data-control="select2"
                     data-hide-search="true"
-                    name="category"
+                    name="provider"
                   >
                     <option selected="selecciona una opción" value="">
                       Selecciona una opción
                     </option>
-                    <option>Boleta</option>
-                    <option>Factura</option>
-                    <option>Guía de Remisión</option>
+                    <option value="item.id" *ngFor="let item of provider">{{ item.name }}</option>
                   </select>
 
                   <!--end::Input-->
@@ -292,37 +235,151 @@
           <div class="modal-header bg-dark">
               <h4 class="modal-title text-white" id="mdlAddProducts">Agregar Productos</h4>
           </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <div class="input-group mb-5">
-                  <button class="input-group-addon btn bg-dark"><i class="fa fa-search text-white"></i></button>
-                  <input type="text" class="form-control" placeholder="Buscar Productos">
+          <div class="modal-body p-0">
+            <div class="form-group pt-8 px-7">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="mb-5 fv-row">
+                    <!--begin::Label-->
+                    <label class="required form-label">Seleccionar Proveedor</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <select
+                      class="form-select mb-2"
+                      data-control="select2"
+                      data-hide-search="true"
+                      name="provider"
+                    >
+                      <option selected="selecciona una opción" value="">
+                        Selecciona una opción
+                      </option>
+                      <option value="item.id" *ngFor="let item of provider">{{ item.name }}</option>
+                    </select>
+
+                    <!--end::Input-->
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="mt-2 fv-row">
+                    <label for=""></label>
+                    <div class="input-group mb-5">
+                      <button class="input-group-addon btn bg-dark"><i class="fa fa-search text-white"></i></button>
+                      <input type="text" (keyup)="applyFilter($event)" class="form-control" placeholder="Buscar Productos">
+                  </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="mb-4 fv-row">
+                    <!--begin::Label-->
+                    <label class="required form-label">Cantidad</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <div class="input-group has-validation">
+                      <input
+                        type="number"
+                        min="0"
+                        class="form-control mb-2"
+                        placeholder="0.00"
+                      />
+                    </div>
+
+                    <!--end::Input-->
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-4 fv-row">
+                    <!--begin::Label-->
+                    <label class="required form-label"
+                      >Precio de Unitario</label
+                    >
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <div class="input-group has-validation">
+                      <input
+                        type="number"
+                        min="0"
+                        class="form-control mb-2"
+                        placeholder="0.00"                    />
+                    </div>
+
+                    <!--end::Input-->
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-4 fv-row">
+                    <!--begin::Label-->
+                    <label class="required form-label">Precio Total</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <div class="input-group has-validation">
+                      <input
+                        type="number"
+                        min="0"
+                        class="form-control mb-2"
+                        placeholder="0.00"
+                      />
+                    </div>
+
+                    <!--end::Input-->
+                  </div>
+                </div>
               </div>
           </div>
              <div class="table-responsive">
-              <table class="table striped table-bordered">
-                <thead class="bg-dark text-white">
-                  <tr>
-                    <th class="text-center">#</th>
-                    <th class="text-center">Nombre</th>
-                    <th class="text-center">Stock</th>
-                    <th class="text-center">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="text-center">1</td>
-                    <td class="text-center">Cerveza Pilsen</td>
-                    <td class="text-center">Nunca se acaba :v</td>
-                    <td class="text-center">
+              <mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container>
+                  <ng-container matColumnDef="code">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                      Código</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let row" data-label="Código" class="mt-4">
+                      {{ row.code }}
+                    </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                      Nombre
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" data-label="Nombre" class="mt-4">
+                      {{ row.name }}
+                    </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="stock">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                      Stock
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" data-label="Stock" class="mt-4">
+                      {{ row.stock }}
+                    </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="acciones">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                      Acciones
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let category" data-label="Acciones" class="mt-4">
                       <button class="btn btn-primary">
-                          <i class="fa fa-shopping-cart mr-2"></i>
-                          <span>Agregar</span>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                        <i class="fa fa-shopping-cart" style="padding-right: 0.6rem!important;"></i>
+                        <span>Agregar</span>
+                    </button>
+                    </mat-cell>
+                  </ng-container>
+                </ng-container>
+
+                <tr *matNoDataRow class="nodata">
+                  <p>No se encontraron resultados con su búsqueda</p>
+                </tr>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+              </mat-table>
+
              </div>
             </div>
           <div class="modal-footer">
