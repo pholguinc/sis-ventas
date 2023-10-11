@@ -52,11 +52,11 @@ export class ProductsService {
         newProduct.category = category;
       }
 
-      if (data.providersIds) {
-        const provider = await this.providerRepo.find({
-          where: { id: In(data.providersIds) },
+      if (data.providerId) {
+        const provider = await this.providerRepo.findOne({
+          where: { id: data.categoryId },
         });
-        newProduct.providers = provider;
+        newProduct.provider = provider;
       }
 
       return this.productRepo.save(newProduct);
@@ -77,7 +77,7 @@ export class ProductsService {
         order: {
           name: 'ASC',
         },
-        relations: ['category', 'brand', 'providers'],
+        relations: ['category', 'brand', 'provider'],
         select: {
           category: {
             id: false,
@@ -89,8 +89,8 @@ export class ProductsService {
             code: true,
           },
 
-          providers: {
-            id: true,
+          provider: {
+            id: false,
             name: true,
           },
         },
@@ -181,6 +181,4 @@ export class ProductsService {
       throw ErrorManager.createSignatureError(error.message);
     }
   }
-
-  
 }

@@ -28,10 +28,7 @@ export class Provider {
   @Column({ type: 'varchar' })
   address: string;
 
-  /*@OneToMany(() => Product, (product) => product.providers)
-  products: Product[];*/
-
-  @ManyToMany(() => Product, (product) => product.providers)
+  @OneToMany(() => Product, (product) => product.provider)
   products: Product[];
 
   @Column(() => DateAt, { prefix: false })
