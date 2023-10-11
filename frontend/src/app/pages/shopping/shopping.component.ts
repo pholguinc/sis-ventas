@@ -23,6 +23,8 @@ export class ShoppingComponent implements OnInit, AfterViewInit {
   product: Product[] = [];
   provider: Provider[] = [];
 
+  selectedProveedor!: number;
+
   dataSource!: MatTableDataSource<Product>;
 
   displayedColumns: string[] = ['code', 'name', 'stock','acciones'];
@@ -50,14 +52,6 @@ export class ShoppingComponent implements OnInit, AfterViewInit {
   }
 
 
-  applyProviderFilter(event: Event) {
-    const target = event.target as HTMLSelectElement; // Convierte el objetivo a un elemento HTMLSelectElement
-    if (target) {
-      const value = target.value; // Accede a la propiedad value solo si target es válido
-      this.dataSource.filter = value || ''; // Asigna un valor vacío si value es null o undefined
-    }
-  }
-
 
   loadProducts(){
     this.productsService.loadProducts()
@@ -70,6 +64,7 @@ export class ShoppingComponent implements OnInit, AfterViewInit {
       }
     })
   }
+
 
   loadProviders(){
     this.providersService.loadProviders()

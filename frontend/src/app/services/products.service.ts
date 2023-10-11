@@ -44,6 +44,11 @@ export class ProductsService {
     return this.http.patch<Product>(`${base_url}/products/${id}`, product,{ headers: this.getHeadersToken() });
   }
 
+  productsProvider(id: string): Observable<any[]> {
+    const url = `${base_url}/providers/${id}/products`;
+    return this.http.get<any[]>(url);
+  }
+
   //Función para eliminar el Producto y validar token
   deleteProduct(id: string): Observable<Product> {
     return this.http.delete<Product>(`${base_url}/products/${id}`, { headers: this.getHeadersToken() });
