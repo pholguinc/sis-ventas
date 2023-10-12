@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -23,6 +24,10 @@ export class ShoppingComponent implements OnInit, AfterViewInit {
   product: Product[] = [];
   provider: Provider[] = [];
 
+  fProductAdd! :FormGroup;
+
+  formvariant!: FormArray<any>;
+
   selectedProveedor!: number;
 
   dataSource!: MatTableDataSource<Product>;
@@ -31,7 +36,8 @@ export class ShoppingComponent implements OnInit, AfterViewInit {
 
   constructor(
     private productsService:ProductsService,
-    private providersService: ProvidersService
+    private providersService: ProvidersService,
+    private fb: FormBuilder,
     ){}
 
   ngAfterViewInit(): void {
@@ -44,6 +50,12 @@ export class ShoppingComponent implements OnInit, AfterViewInit {
     this.dataSource = new MatTableDataSource();
     this.loadProducts();
     this.loadProviders();
+
+  }
+
+
+  addItems(){
+    
   }
 
   applyFilter(event: Event) {
