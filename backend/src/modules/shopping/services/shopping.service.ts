@@ -1,15 +1,41 @@
+import { ShoppingDetails } from './../entities/shoppingDetails.entity';
 import { Injectable } from '@nestjs/common';
-import { CreateShoppingDto } from '../dto/create-shopping.dto';
-import { UpdateShoppingDto } from '../dto/update-shopping.dto';
+import { CreateShoppingDto, UpdateShoppingDto } from '../dto/shopping.dto';
+import {
+  CreateShoppingDetails,
+  UpdateShoppingDetails,
+} from '../dto/shoppingDetails.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Shopping } from '../entities/shopping.entity';
+import { Repository } from 'typeorm';
+import { ErrorManager } from 'src/utils/error.manager';
 
 @Injectable()
 export class ShoppingService {
-  create(createShoppingDto: CreateShoppingDto) {
-    return 'This action adds a new shopping';
+  constructor(
+    @InjectRepository(Shopping)
+    private readonly shoppingRepo: Repository<Shopping>,
+    @InjectRepository(ShoppingDetails)
+    private readonly shoppingDetailsRepo: Repository<ShoppingDetails>,
+  ) {}
+
+  async create(data: CreateShoppingDto): Promise<Shopping> {
+    return this.shoppingRepo.create(data);
   }
 
-  findAll() {
-    return `This action returns all shopping`;
+  async findAll(): Promise<Shopping[]> {
+    try {
+      const shopping = await this.shoppingRepo.find();
+      if (shopping.length === 0) {
+        throw new ErrorManager({
+          type: 'BAD_REQUEST',
+          message: 'No se encontró ningún resultado',
+        });
+      }
+      return shopping;
+    } catch (error) {
+      throw ErrorManager.createSignatureError(error.message);
+    }
   }
 
   findOne(id: number) {

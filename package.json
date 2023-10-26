@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@nestjs/testing": "^10.2.7"
+  }
+}

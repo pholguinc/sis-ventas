@@ -1,8 +1,18 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ShoppingService } from '../services/shopping.service';
-import { CreateShoppingDto } from '../dto/create-shopping.dto';
-import { UpdateShoppingDto } from '../dto/update-shopping.dto';
+import { CreateShoppingDto, UpdateShoppingDto } from '../dto/shopping.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { Shopping } from '../entities/shopping.entity';
+import { ShoppingDetails } from '../entities/shoppingDetails.entity';
+import { CreateShoppingDetails } from '../dto/shoppingDetails.dto';
 
 @ApiTags('Shopping')
 @Controller('shopping')
@@ -10,8 +20,8 @@ export class ShoppingController {
   constructor(private readonly shoppingService: ShoppingService) {}
 
   @Post()
-  create(@Body() createShoppingDto: CreateShoppingDto) {
-    return this.shoppingService.create(createShoppingDto);
+  async createShopping(@Body() data: CreateShoppingDto) {
+    return this.shoppingService.create(data);
   }
 
   @Get()
@@ -25,7 +35,10 @@ export class ShoppingController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateShoppingDto: UpdateShoppingDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateShoppingDto: UpdateShoppingDto,
+  ) {
     return this.shoppingService.update(+id, updateShoppingDto);
   }
 

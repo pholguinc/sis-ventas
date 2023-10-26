@@ -1,4 +1,4 @@
-import { SalesDetail } from './../../sales-details/entities/sales-detail.entity';
+import { ShoppingDetails } from './../../shopping/entities/shoppingDetails.entity';
 import { Brand } from '../../brands/entities/brand.entity';
 import { Category } from '../../categories/entities/category.entity';
 import { DateAt } from '../../../database/date-at.entity';
@@ -50,6 +50,6 @@ export class Product {
   @ManyToOne(() => Provider, (provider) => provider.products)
   provider: Provider;
 
-  @OneToMany(() => Product, (product) => product.salesDetails)
-  salesDetails: SalesDetail[];
+  @OneToMany(() => Product, (product) => product.shoppingDetails)
+  shoppingDetails: ShoppingDetails[];
 }

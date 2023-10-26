@@ -28,8 +28,8 @@ export class Setting {
   @Column({ type: 'varchar' })
   address: string;
 
-  @OneToMany(() => Shopping, (shopping) => shopping.setting)
-  shoppings: Shopping[];
+  /*@OneToMany(() => Shopping, (shopping) => shopping.setting)
+  shoppings: Shopping[];*/
 
   @Column(() => DateAt, { prefix: false })
   register: DateAt;
