@@ -3,7 +3,7 @@ import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateSettingDto, UpdateSettingDto } from '../dto/setting.dto';
 import { Repository, UpdateResult } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ErrorManager } from 'src/utils/error.manager';
+import { ErrorManager } from '../../../utils/error.manager';
 import { ConfigService, ConfigType } from '@nestjs/config';
 import config from '../../../config/config';
 

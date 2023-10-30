@@ -29,12 +29,12 @@ export class User {
   role: string;
 
   @OneToMany(() => Sale, (sale) => sale.user)
-  sales: Sale[];
+  sales?: Sale[];
 
   @OneToOne(() => Profile, (profile) => profile.user)
   @JoinColumn({ name: 'profile_id' })
-  profile: Profile;
+  profile?: Profile;
 
   @Column(() => DateAt, { prefix: false })
-  register: DateAt;
+  register?: DateAt;
 }

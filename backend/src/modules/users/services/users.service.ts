@@ -4,7 +4,7 @@ import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { User } from '../entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
-import { ErrorManager } from 'src/utils/error.manager';
+import { ErrorManager } from '../../../utils/error.manager';
 import { Profile } from '../entities/profile.entity';
 
 @Injectable()

@@ -1,4 +1,4 @@
-import { ErrorManager } from 'src/utils/error.manager';
+import { ErrorManager } from '../../../utils/error.manager';
 import { Injectable } from '@nestjs/common';
 import { CreateProviderDto, UpdateProviderDto } from '../dto/provider.dto';
 import { InjectRepository } from '@nestjs/typeorm';

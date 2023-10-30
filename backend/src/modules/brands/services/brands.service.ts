@@ -4,13 +4,7 @@ import { CreateBrandDto, UpdateBrandDto } from '../dto/brand.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Brand } from '../entities/brand.entity';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
-import { ErrorManager } from 'src/utils/error.manager';
-import PDFDocument from 'pdfkit';
-import { PdfkitConstruct } from 'pdfkit-construct';
-import * as fs from 'fs';
-import { join } from 'path';
-import * as pdfmake from 'pdfmake/build/pdfmake';
-import * as vfsFonts from 'pdfmake/build/vfs_fonts';
+import { ErrorManager } from '../../../utils/error.manager';
 
 @Injectable()
 export class BrandsService {

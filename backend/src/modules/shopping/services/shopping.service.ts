@@ -8,7 +8,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Shopping } from '../entities/shopping.entity';
 import { Repository } from 'typeorm';
-import { ErrorManager } from 'src/utils/error.manager';
+import { ErrorManager } from '../../../utils/error.manager';
 
 @Injectable()
 export class ShoppingService {

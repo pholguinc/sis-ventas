@@ -3,10 +3,10 @@ import { Injectable } from '@nestjs/common';
 import { CreateProductDto, UpdateProductDto } from '../dto/product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from '../entities/product.entity';
-import { Brand } from 'src/modules/brands/entities/brand.entity';
+import { Brand } from '../../brands/entities/brand.entity';
 import { Repository, DeleteResult, In } from 'typeorm'; // Import FindOptions
-import { CategoriesService } from 'src/modules/categories/services/categories.service';
-import { ErrorManager } from 'src/utils/error.manager';
+import { CategoriesService } from '../../categories/services/categories.service';
+import { ErrorManager } from '../../../utils/error.manager';
 import { Provider } from '../../providers/entities/provider.entity';
 
 @Injectable()
