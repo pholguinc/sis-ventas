@@ -48,7 +48,7 @@ describe('AuthService', () => {
     });
 
     it('should return null if user is not found', async () => {
-      const email = 'user2@email.com';
+      const email = 'user5@email.com';
       const password = '123456789';
 
       usersService.findByEmail = jest.fn().mockResolvedValue(null);

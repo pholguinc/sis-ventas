@@ -53,14 +53,6 @@ export class CustomersService {
     }
   }
 
-  /*async findAll(page: number, limit: number): Promise<Customer[]> {
-    const customers = await this.customerRepo.find({
-      skip: (page - 1) * limit,
-      take: limit,
-    });
-    return customers;
-  }*/
-
   async findOne(id: string): Promise<Customer> {
     try {
       const customer: Customer = await this.customerRepo

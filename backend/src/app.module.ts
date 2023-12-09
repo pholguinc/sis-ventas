@@ -14,13 +14,12 @@ import { ProvidersModule } from './modules/providers/providers.module';
 import { SettingsModule } from './modules/settings/settings.module';
 import { SalesModule } from './modules/sales/sales.module';
 import { ShoppingModule } from './modules/shopping/shopping.module';
-import { BrandsService } from './modules/brands/services/brands.service';
 import configSchema from './config/configSchema';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: process.env.NODE_ENV || '.env',
+      //envFilePath: process.env.NODE_ENV || '.env',
       load: [config],
       isGlobal: true,
       validationSchema: configSchema,

@@ -12,4 +12,14 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get('/connect')
+  async connectToDatabase() {
+    try {
+      await this.connectToDatabase(); // Conecta a la base de datos
+      return 'Connected to database';
+    } catch (error) {
+      throw new Error('Error connecting to database');
+    }
+  }
 }

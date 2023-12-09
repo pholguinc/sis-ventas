@@ -145,17 +145,8 @@ export class ProductsService {
         productToUpdate.brand = brand;
       }
 
-      /*if (updateProductDto.categoryId) {
-        const category = await this.categoryRepo.findOne({
-          where: { id: updateProductDto.categoryId },
-        });
-        if (!category) {
-          throw new Error('Category not found.');
-        }
-        //productToUpdate.category = category;
-      }*/
 
-      // Update the properties of the product
+
       productToUpdate.name = updateProductDto.name || productToUpdate.name;
       productToUpdate.price = updateProductDto.price || productToUpdate.price;
       productToUpdate.stock = updateProductDto.stock || productToUpdate.stock;
